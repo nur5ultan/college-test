@@ -1,0 +1,129 @@
+.loginWrap{
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: #f7f6fb;  */
+}
+
+.loginBox{
+    background: #fff;
+    padding: 28px;
+    margin-top: 45px;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.loginBox h2 {
+    margin: 0 0 6px 0
+}
+
+.loginBox label {
+    font-size: 14px;
+    color: #333
+}
+
+.loginBox input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #e6e6f0
+}
+
+.loginBox .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 39%;
+    margin-top: 9px;
+}
+
+.loginBox button {
+    background: #5b3b7a;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.loginBox .foot {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px
+}
+
+/* .container {
+    padding: 28px;
+} */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.logout {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+/*
+.section {
+    margin-top: 20px;
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04)
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 700px;
+    margin-left: 18%;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #eaeaf5
+}
+
+.save {
+    background: #5b3b7a;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 2%;
+} */
+
+
+.adminPanel{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.buttonAdmin{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#ff6fb3 0%,#7b3cff 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

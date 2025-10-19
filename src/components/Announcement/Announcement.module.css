@@ -1,0 +1,52 @@
+.card{
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+}
+
+.media{
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay{
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(123,60,255,0.45), rgba(255,111,179,0.35));
+}
+
+.date{
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.body{
+  padding: 22px;
+}
+
+.title{
+  color: #fff;
+  font-size: 20px;
+  margin: 0 0 12px 0;
+  color: #402254;
+}
+
+.excerpt{
+  color: #6b6b6b;
+  font-size: 14px;
+  min-height: 58px;
+}
+
+.more{
+  margin-top: 12px;
+  background: transparent;
+  color: #ff4fa1;
+  border: none;
+  cursor: pointer;
+}
