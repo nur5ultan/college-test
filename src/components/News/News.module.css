@@ -1,0 +1,141 @@
+.wrap{
+    /* display:flex; */
+    gap:28px;
+    padding: 24px;
+    align-items:flex-start;
+}
+
+.buttonBack{
+    background-color: #5b3b7a;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    margin-right: 101%;
+    color: #fff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #eaeaf5;
+    margin-bottom: 5px;
+    outline: none;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 42%;
+    margin-top: 2%;
+}
+
+.save {
+    background: #5b3b7a;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.cancel {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 8px
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06)
+}
+
+.thumb {
+    width: 120px;
+    min-width: 120px;
+    background-size: cover;
+    background-position: center
+}
+
+.info {
+    padding: 12px;
+    flex: 1
+}
+
+.cardActions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px
+}
+
+.edit {
+    background: #ffd54d;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.delete {
+    background: #ff6b6b;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer
+}
+
+.itemTitle {
+    margin: 0 0 8px 0
+}
+
+.itemExcerpt {
+    margin: 0;
+    color: #666
+}
+
+.error {
+    color: #b00
+}
+
+.right h2{
+    margin-top: 75px;
+}
+
+@media (max-width: 900px) {
+    .wrap {
+        flex-direction: column
+    }
+
+    .left {
+        width: 100%
+    }
+
+    .grid {
+        grid-template-columns: 1fr
+    }
+}

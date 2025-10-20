@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Admin.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const ADMIN_CREDENTIALS = { username: 'admin', password: 'secret' };
 
 export default function Admin (){
-
-
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
@@ -14,6 +13,8 @@ export default function Admin (){
   const [excerpt, setExcerpt] = useState('');
   const [image, setImage] = useState('');
   const [status, setStatus] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const token = localStorage.getItem('admin_logged');
@@ -74,11 +75,11 @@ export default function Admin (){
       </div>
 
       <div className={styles.adminPanel}>
-        <button className={styles.buttonAdmin}>Добавить Новость</button>
-        <button className={styles.buttonAdmin}>Добавить Объявления и мероприятия</button>
-        <button className={styles.buttonAdmin}>Добавить Фотогалерея</button>
-        <button className={styles.buttonAdmin}>Добавить Руководство колледжа</button>
-        <button className={styles.buttonAdmin}>Добавить Новость</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/news")}>Добавить новость</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/ads")}>Добавить объявления и мероприятия</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/galery")}>Добавить фотогалерея</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/guide")}>Добавить руководство колледжа</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/document")}>Добавить документы</button>
       </div>
     </div>
   )
