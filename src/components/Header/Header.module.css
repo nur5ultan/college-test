@@ -45,6 +45,11 @@
     font-weight: 500;
 }
 
+.activeLang{
+    font-weight: 700;
+    color: var(--accent, #6e2aa3);
+}
+
 .socialImg{
     height: 30px;
     width: 30px;
@@ -80,3 +85,23 @@
     border: 1px solid #f1f1f1;
     border-top: transparent;
 }
+
+.headerTopRight{
+    gap: 25px;
+}
+
+.searchOverlay{
+    position: absolute;
+    right: 6%;
+    top: 18%;
+    background: rgba(255,255,255,0.98);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    z-index: 40;
+}
+
+.searchForm{ display:flex; gap:8px; align-items:center }
+.searchInput{ padding:8px 10px; border-radius:6px; border:1px solid #e6e6e6; min-width:220px }
+.searchBtn{ background:var(--accent, #6e2aa3); color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer }
+

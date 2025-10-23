@@ -1,0 +1,18 @@
+{
+  "director": {
+    "title": "Director of the College",
+    "subtitle": "News, messages and director's blog",
+    "contact": "Contact"
+  },
+  "search": {
+    "placeholder": "Search the site...",
+    "find": "Find"
+  },
+  "feedback": {
+    "email": "Your Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Thank you! Your message has been sent.",
+    "error": "Failed to send the message. Try later."
+  }
+}

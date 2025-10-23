@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const API_BASE = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api";
 
 const api = axios.create({
     baseURL: API_BASE,
@@ -16,5 +16,19 @@ api.interceptors.response.use(
         return Promise.reject(err);
     }
 );
+
+// add request interceptor to include Authorization header when token exists
+api.interceptors.request.use((config) => {
+    try {
+        const token = typeof window !== 'undefined' && localStorage.getItem('auth_token');
+        if (token) {
+            config.headers = config.headers || {};
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+    } catch (e) {
+        // ignore
+    }
+    return config;
+}, (error) => Promise.reject(error));
 
 export default api;

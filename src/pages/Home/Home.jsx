@@ -4,6 +4,7 @@ import styles from './Home.module.css';
 import Stats from '../../components/Stats/Stats';
 import SliderSpecialties from "../../components/SliderSpecialties/SliderSpecialties";
 import AnnouncementsList from '../../components/Announcement/AnnouncementsList';
+import Footer from "../../components/Footer/Footer";
 
 
 const videos = ['/video/background.mp4',]
@@ -19,46 +20,112 @@ export default function Home(){
     }, []);
 
     return (
-        <div>
-            <Header />
+      <div>
+        <Header />
 
-            <section className={styles.hero}>
-                <video
-                    key={videos[index]}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className={styles.videoBackground}
+        <section className={styles.hero}>
+          <video
+            key={videos[index]}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={styles.videoBackground}
+          >
+            <source src={videos[index]} type="video/mp4" />
+            Ваш браузер не поддерживает видео.
+          </video>
+
+          <div className={styles.heroContent}>
+            <h1 className={styles.h1}>Официальный сайт</h1> <br></br>
+            <h2 className={styles.h2}>Мангыстауский колледж туризма</h2>
+            <a
+              className={styles.videoButton}
+              href="https://youtu.be/AnGRgWeVNJY?si=bx9p6gKstULYRNKi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/images/player.png"
+                className={styles.playerImg}
+                alt="play"
+              />
+            </a>
+            <p className={styles.playerP}>Смотреть видео о колледже</p>
+          </div>
+        </section>
+
+        <Stats
+          data={[
+            {
+              id: "students",
+              icon: "/images/student-icon.png",
+              value: "3475",
+              label: "студентов",
+            },
+            {
+              id: "buildings",
+              icon: "/images/building-icon.png",
+              value: "4",
+              label: "учебных корпусов",
+            },
+            {
+              id: "teachers",
+              icon: "/images/teacher-icon.png",
+              value: "221",
+              label: "преподавателей",
+            },
+            {
+              id: "dorms",
+              icon: "/images/dorm-icon.png",
+              value: "2",
+              label: "общежития",
+            },
+          ]}
+        />
+
+        <img src="/images/god.png" className={styles.godImg} alt="" />
+
+        <SliderSpecialties />
+
+        <h1>Объявления и мероприятия</h1>
+        <AnnouncementsList />{/* Объявления шақыру керек мына жерге */}
+
+        <h1>Новости</h1>
+        <p>Мангистауского колледж туризма</p>
+
+        {/* Новости шақыру керек мына жерге */}
+
+        <div className={styles.map}>
+            <div className={styles.mapContainer}>
+                <a
+                href="https://yandex.kz/maps/ru/29575/aktau/?utm_medium=mapframe&utm_source=maps"
+                className={styles.mapLinkTop}
+                target="_blank"
+                rel="noopener noreferrer"
                 >
-                    <source src={videos[index]} type="video/mp4" />
-                    Ваш браузер не поддерживает видео.
-                </video>
+                Актау
+                </a>
+                <a
+                href="https://yandex.kz/maps/ru/29575/aktau/?ll=51.169963%2C43.648722&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
+                className={styles.mapLinkBottom}
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                43.648923, 51.169479 — Яндекс Карты
+                </a>
+                <iframe
+                src="https://yandex.kz/map-widget/v1/?ll=51.169963%2C43.648722&mode=whatshere&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
+                frameBorder="1"
+                allowFullScreen
+                title="Yandex Map Aktau"
+                className={styles.iframe}
+                ></iframe>
+            </div>
+        </div>
 
-                <div className={styles.heroContent}>
-                    <h1 className={styles.h1}>Официальный сайт</h1> <br></br>
-                    <h2 className={styles.h2}>Мангыстауский колледж туризма</h2>
-                                        <a className={styles.videoButton} href="https://youtu.be/AnGRgWeVNJY?si=bx9p6gKstULYRNKi" target="_blank" rel="noopener noreferrer">
-                                            <img src="/images/player.png" className={styles.playerImg} alt="play"/>
-                                        </a>
-                    <p className={styles.playerP}>Смотреть видео о колледже</p>
+       <Footer />
 
-                </div>
-            </section> 
-
-            <Stats data={[
-                { id: 'students', icon: '/images/student-icon.png', value: '3475', label: 'студентов' },
-                { id: 'buildings', icon: '/images/building-icon.png', value: '4', label: 'учебных корпусов' },
-                { id: 'teachers', icon: '/images/teacher-icon.png', value: '221', label: 'преподавателей' },
-                { id: 'dorms', icon: '/images/dorm-icon.png', value: '2', label: 'общежития' },
-            ]} />
-
-            <img src="/images/god.png" className={styles.godImg} alt=""/>
-
-            <SliderSpecialties />
-            
-            <h1>Объявления и мероприятия</h1>
-            <AnnouncementsList />
 
         </div>
     );
