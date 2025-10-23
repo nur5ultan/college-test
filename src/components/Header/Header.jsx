@@ -7,6 +7,7 @@ import styles from './Header.module.css';
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [q, setQ] = useState('');
+    const [sidebar, setSidebar] = useState(false);
     const inputRef = useRef(null);
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
@@ -50,18 +51,18 @@ export default function Header() {
                     <Link to={'/about'} className={styles.language}>{t('menu.about','О нас')}</Link>
                     <Link to={'/specialties'} className={styles.language}>{t('menu.spec','Специальности')}</Link>
                     <Link to={'/applicants'} className={styles.language}>{t('menu.applicants','Абитуриентам')}</Link>
-                    <Link to={'/students'} className={styles.language}>Студентам</Link>
-                    <Link to={'#'} className={styles.language}>Преподавателям</Link>
+                    <Link to={'/students'} className={styles.language}>{t('menu.students','Студентам')}</Link>
+                    <Link to={'#'} className={styles.language}>{t('menu.teachers','Преподавателям')}</Link>
                     <Link to={'/contacts'} className={styles.language}>{t('menu.contacts','Контакты')}</Link>
                 </div>
             </div>
 
             <div className={styles.headerRight}>
-                <button className={styles.button} aria-label="Открыть поиск" onClick={()=>setOpen(s=>!s)}>
-                    <img src="/images/search.png" className={styles.instrumentImg} alt="Поиск" />
+                <button className={styles.button} aria-label={t('search.open','Открыть поиск')} onClick={()=>setOpen(s=>!s)}>
+                    <img src="/images/search.png" className={styles.instrumentImg} alt={t('search.icon_alt','Поиск')} />
                 </button>
-                <button className={styles.button}>
-                    <img src="/images/burger.png" className={styles.instrumentImg} alt="Меню" />
+                <button className={styles.button} aria-label={t('menu.open_sidebar','Открыть меню')} onClick={()=>setSidebar(s=>!s)}>
+                    <img src="/images/burger.png" className={styles.instrumentImg} alt={t('menu.burger_alt','Меню')} />
                 </button>
             </div>
 
@@ -73,7 +74,38 @@ export default function Header() {
                   </form>
                 </div>
             )}
+                        {typeof window !== 'undefined' && (
+                            <Sidebar isOpen={sidebar} onClose={()=>setSidebar(false)} links={[
+                                { to: '/about', label: t('menu.about','О нас') },
+                                { to: '/specialties', label: t('menu.spec','Специальности') },
+                                { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
+                                { to: '/students', label: t('menu.students','Студентам') },
+                                { to: '/contacts', label: t('menu.contacts','Контакты') },
+                                { to: '/rules', label: t('menu.rules','Правила приема') },
+                                { to: '/director', label: t('menu.director','Директор колледжа') },
+                                { to: '/specialties', label: t('menu.specialties','Специальности') },
+                            ]} />
+                        )}
         </header>
     )
+}
+
+function Sidebar({ isOpen, onClose, links=[] }){
+        const { t } = useTranslation();
+        if(!isOpen) return null;
+        return (
+            <div className={styles.sidebarOverlay} onClick={onClose} onKeyDown={(e)=>{ if(e.key==='Escape') onClose(); }}>
+                <aside className={styles.sidebar} role="dialog" aria-label={t('menu.sidebar_label','Меню')} onClick={e=>e.stopPropagation()}>
+                    <button className={styles.sidebarClose} aria-label={t('menu.close','Закрыть')} onClick={onClose}>×</button>
+                    <nav className={styles.sidebarNav}>
+                        {links.map((l, idx)=> (
+                            <Link key={l.to} to={l.to} className={styles.sidebarLink} onClick={onClose} style={{ '--i': idx }}>
+                                {l.label}
+                            </Link>
+                        ))}
+                    </nav>
+                </aside>
+            </div>
+        );
 }
 

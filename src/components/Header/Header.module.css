@@ -39,7 +39,10 @@
     font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
+    background-color: transparent;
+    border: none;
 }
+
 .language:hover{
     text-decoration: underline;
     font-weight: 500;
@@ -104,4 +107,71 @@
 .searchForm{ display:flex; gap:8px; align-items:center }
 .searchInput{ padding:8px 10px; border-radius:6px; border:1px solid #e6e6e6; min-width:220px }
 .searchBtn{ background:var(--accent, #6e2aa3); color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer }
+
+/* Sidebar styles */
+.sidebarOverlay{
+    position:fixed;
+    top:0; right:0; bottom:0; left:0;
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:flex-end;
+    z-index:60;
+}
+.sidebar{
+    width:320px;
+    max-width:85%;
+    background:#fff;
+    height:100%;
+    padding:20px;
+    box-shadow:-8px 0 30px rgba(0,0,0,0.12);
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+.sidebar{
+    /* start slightly offset for animation */
+    transform: translateX(8px);
+    opacity: 0;
+    animation: panelSlide 360ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+.sidebarClose{
+    background:transparent;
+    border:none;
+    font-size:28px;
+    line-height:1;
+    align-self:flex-end;
+    cursor:pointer;
+}
+.sidebarClose{
+    transform-origin:center;
+    animation: closePop 240ms ease 120ms both;
+}
+.sidebarNav{ display:flex; flex-direction:column; gap:12px; margin-top:8px }
+.sidebarLink{ color:var(--text, #222); text-decoration:none; font-size:18px; opacity:0; transform: translateX(10px); }
+.sidebarLink:hover{ text-decoration:underline }
+.sidebarLink{
+    /* stagger using CSS var --i (set inline from JSX) */
+    animation: linkFade 360ms cubic-bezier(.2,.9,.2,1) forwards;
+    animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes overlayFade{
+    from{ opacity: 0 }
+    to{ opacity: 1 }
+}
+
+@keyframes panelSlide{
+    from{ transform: translateX(10px); opacity: 0 }
+    to{ transform: translateX(0); opacity: 1 }
+}
+
+@keyframes linkFade{
+    from{ opacity: 0; transform: translateX(10px) }
+    to{ opacity: 1; transform: translateX(0) }
+}
+
+@keyframes closePop{
+    from{ transform: scale(0.6); opacity: 0 }
+    to{ transform: scale(1); opacity: 1 }
+}
 

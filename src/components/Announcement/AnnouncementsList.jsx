@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Announcement from './Announcement';
 import styles from './AnnouncementsList.module.css';
 import api from '../../api/axios';
+import { useTranslation } from 'react-i18next';
 
 export default function AnnouncementsList(){
+  const { t } = useTranslation();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,8 +44,8 @@ export default function AnnouncementsList(){
     return ()=> { mounted = false };
   },[]);
 
-  if(loading) return <div>Загрузка...</div>;
-  if(error) return <div>{error}</div>;
+  if(loading) return <div>{t('loading','Загрузка...')}</div>;
+  if(error) return <div>{t('announcements.error', error)}</div>;
 
   return (
     <div className={styles.grid}>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Header from '../../components/Header/Header';
 import api from '../../api/axios';
 import styles from './Director.module.css';
 import Footer from '../../components/Footer/Footer';
 
 export default function Director(){
+  const { t } = useTranslation();
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [sending, setSending] = useState(false);
@@ -18,24 +20,24 @@ export default function Director(){
 
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if(!emailRe.test(email)){
-        setError('Введите корректный email');
+        setError(t('feedback.invalid_email','Введите корректный email'));
         return;
       }
       if(!message || message.trim().length < 3){
-        setError('Пожалуйста, введите сообщение');
+        setError(t('feedback.enter_message','Пожалуйста, введите сообщение'));
         return;
       }
 
       setSending(true);
       try{
-        const payload = { full_name: 'Посетитель сайта', title: email, text: message };
+        const payload = { full_name: t('feedback.visitor','Посетитель сайта'), title: email, text: message };
         await api.post('/feedbacks', payload);
-        setSuccess('Спасибо! Ваше сообщение отправлено.');
+        setSuccess(t('feedback.success','Спасибо! Ваше сообщение отправлено.'));
         setEmail('');
         setMessage('');
       }catch(err){
         console.error(err);
-        setError('Не удалось отправить сообщение. Попробуйте позже.');
+        setError(t('feedback.error','Не удалось отправить сообщение. Попробуйте позже.'));
       }finally{
         setSending(false);
       }
@@ -47,8 +49,8 @@ export default function Director(){
       <main className={styles.page}>
         <header className={styles.header}>
           <div className={styles.headerInner}>
-            <h1 className={styles.title}>Директор колледжа</h1>
-            <p className={styles.subtitle}>Новости, обращения и блог директора</p>
+            <h1 className={styles.title}>{t('director.title','Директор колледжа')}</h1>
+            <p className={styles.subtitle}>{t('director.subtitle','Новости, обращения и блог директора')}</p>
           </div>
         </header>
 
@@ -67,41 +69,41 @@ export default function Director(){
           </aside>
 
           <article className={styles.content}>
-            <h3 className={styles.sectionTitle}>Обращение</h3>
-            <p>Информация о директоре колледжа будет размещена здесь. Краткая биография или информация о профессиональном опыте, миссии и целях.</p>
+            <h3 className={styles.sectionTitle}>{t('director.address','Обращение')}</h3>
+            <p>{t('director.about_text','Информация о директоре колледжа будет размещена здесь. Краткая биография или информация о профессиональном опыте, миссии и целях.')}</p>
 
-            <h3 className={styles.sectionTitle}>Написать сообщение директору</h3>
+            <h3 className={styles.sectionTitle}>{t('director.write_message','Написать сообщение директору')}</h3>
 
             <div className={styles.formWrap}>
               <form className={styles.feedbackForm} onSubmit={handleSubmit}>
-                <label className={styles.label} htmlFor="email">Ваш Email</label>
+                <label className={styles.label} htmlFor="email">{t('feedback.email','Ваш Email')}</label>
                 <input id="email" className={styles.input} type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@mail.com" />
 
-                <label className={styles.label} htmlFor="message">Сообщение</label>
-                <textarea id="message" className={styles.textarea} rows={5} value={message} onChange={e=>setMessage(e.target.value)} placeholder="Ваше сообщение..." />
+                <label className={styles.label} htmlFor="message">{t('feedback.message','Сообщение')}</label>
+                <textarea id="message" className={styles.textarea} rows={5} value={message} onChange={e=>setMessage(e.target.value)} placeholder={t('feedback.message_placeholder','Ваше сообщение...')} />
 
                 {error && <div className={styles.formError}>{error}</div>}
                 {success && <div className={styles.formSuccess}>{success}</div>}
 
                 <div className={styles.formActions}>
-                  <button className={styles.btnPrimary} type="submit" disabled={sending}>{sending ? 'Отправка...' : 'Отправить'}</button>
+                  <button className={styles.btnPrimary} type="submit" disabled={sending}>{sending ? t('feedback.sending','Отправка...') : t('feedback.send','Отправить')}</button>
                 </div>
               </form>
             </div>
 
-            <h3 className={styles.sectionTitle}>Последние публикации</h3>
+            <h3 className={styles.sectionTitle}>{t('director.latest_posts','Последние публикации')}</h3>
             <div className={styles.postsGrid}>
               {/* Пример карточек — можно заменить на компонент списка публикаций */}
               <article className={styles.postCard}>
-                <h4 className={styles.postTitle}>Новости колледжа и важные объявления</h4>
-                <p className={styles.postExcerpt}>Краткий анонс публикации директора. Дата и превью текста.</p>
-                <button className={styles.postMore}>читать →</button>
+                <h4 className={styles.postTitle}>{t('director.post_news','Новости колледжа и важные объявления')}</h4>
+                <p className={styles.postExcerpt}>{t('director.post_excerpt','Краткий анонс публикации директора. Дата и превью текста.')}</p>
+                <button className={styles.postMore}>{t('director.read','читать →')}</button>
               </article>
 
               <article className={styles.postCard}>
-                <h4 className={styles.postTitle}>Отчёты о встречах и поездках</h4>
-                <p className={styles.postExcerpt}>Короткий текст-описание прошедших событий и достижений.</p>
-                <button className={styles.postMore}>читать →</button>
+                <h4 className={styles.postTitle}>{t('director.post_reports','Отчёты о встречах и поездках')}</h4>
+                <p className={styles.postExcerpt}>{t('director.post_reports_excerpt','Короткий текст-описание прошедших событий и достижений.')}</p>
+                <button className={styles.postMore}>{t('director.read','читать →')}</button>
               </article>
             </div>
           </article>

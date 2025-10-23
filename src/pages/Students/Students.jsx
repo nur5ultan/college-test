@@ -1,14 +1,17 @@
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Students.module.css';
+import { useTranslation } from 'react-i18next';
+
 export default function Students(){
+    const { t } = useTranslation();
     return(
         <div>
             <Header />
-               <h1 className={styles.title}>Студентам</h1>
-               <p className={styles.p}>Колледжге қабылданған кезде&nbsp; студенттерге арналған жол сілтеуші көмек көрсетеді.</p>
-                <p className={styles.p}>2019-2020 оқу жылының топ жетекшілері:</p>
-                <p className={styles.p}>қоңырау кестесі</p>
+               <h1 className={styles.title}>{t('students.title','Студентам')}</h1>
+               <p className={styles.p}>{t('students.intro','Колледжге қабылданған кезде студенттерге арналған жол сілтеуші көмек көрсетеді.')}</p>
+                <p className={styles.p}>{t('students.leaders','2019-2020 оқу жылының топ жетекшілері:')}</p>
+                <p className={styles.p}>{t('students.timetable_label','қоңырау кестесі')}</p>
                 <p>&nbsp;</p>
                 <p>1 ауысым</p>
                 <table border="1px">

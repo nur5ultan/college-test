@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import Header from "../../components/Header/Header";
 import styles from './Home.module.css';
 import Stats from '../../components/Stats/Stats';
@@ -10,6 +11,7 @@ import Footer from "../../components/Footer/Footer";
 const videos = ['/video/background.mp4',]
 
 export default function Home(){
+  const { t } = useTranslation();
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -37,8 +39,8 @@ export default function Home(){
           </video>
 
           <div className={styles.heroContent}>
-            <h1 className={styles.h1}>Официальный сайт</h1> <br></br>
-            <h2 className={styles.h2}>Мангыстауский колледж туризма</h2>
+            <h1 className={styles.h1}>{t('home.title','Официальный сайт')}</h1> <br></br>
+            <h2 className={styles.h2}>{t('home.name','Мангыстауский колледж туризма')}</h2>
             <a
               className={styles.videoButton}
               href="https://youtu.be/AnGRgWeVNJY?si=bx9p6gKstULYRNKi"
@@ -51,7 +53,7 @@ export default function Home(){
                 alt="play"
               />
             </a>
-            <p className={styles.playerP}>Смотреть видео о колледже</p>
+            <p className={styles.playerP}>{t('home.watch_video','Смотреть видео о колледже')}</p>
           </div>
         </section>
 
@@ -84,15 +86,15 @@ export default function Home(){
           ]}
         />
 
-        <img src="/images/god.png" className={styles.godImg} alt="" />
+        {/* <img src="/images/god.png" className={styles.godImg} alt="" /> */}
 
         <SliderSpecialties />
 
-        <h1>Объявления и мероприятия</h1>
+  <h1>{t('home.announcements','Объявления и мероприятия')}</h1>
         <AnnouncementsList />{/* Объявления шақыру керек мына жерге */}
 
-        <h1>Новости</h1>
-        <p>Мангистауского колледж туризма</p>
+  <h1>{t('home.news','Новости')}</h1>
+  <p>{t('home.news_sub','Мангистауского колледж туризма')}</p>
 
         {/* Новости шақыру керек мына жерге */}
 

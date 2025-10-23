@@ -2,7 +2,16 @@
   "director": {
     "title": "Director of the College",
     "subtitle": "News, messages and director's blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "address": "Address",
+    "about_text": "Director information will be placed here. Short biography or information about professional experience, mission and goals.",
+    "write_message": "Write a message to the director",
+    "latest_posts": "Latest posts",
+    "post_news": "College news and important announcements",
+    "post_excerpt": "Short announcement of the director's publication. Date and text preview.",
+    "post_reports": "Reports on meetings and trips",
+    "post_reports_excerpt": "Short description of past events and achievements.",
+    "read": "read →"
   },
   "search": {
     "placeholder": "Search the site...",
@@ -13,6 +22,51 @@
     "message": "Message",
     "send": "Send",
     "success": "Thank you! Your message has been sent.",
-    "error": "Failed to send the message. Try later."
+    "error": "Failed to send the message. Try later.",
+    "visitor": "Website visitor",
+    "invalid_email": "Please enter a valid email",
+    "enter_message": "Please enter a message",
+    "sending": "Sending..."
+  }
+  ,
+  "home": {
+    "title": "Official website",
+    "name": "Mangistau College of Tourism",
+    "watch_video": "Watch the college video",
+    "announcements": "Announcements & Events",
+    "news": "News",
+    "news_sub": "Mangistau College of Tourism"
+  }
+  ,
+  "loading": "Loading...",
+  "announcement": { "more": "more →" },
+  "announcements": { "error": "Failed to load announcements" },
+  "menu": { "about": "About", "spec": "Specialties", "applicants": "For applicants", "students": "For students", "teachers": "For teachers", "contacts": "Contacts" },
+  "footer": {
+    "useful": "Useful links",
+    "departments": "Departments",
+    "screen_reader": "Screen reader",
+    "admission": "Admission",
+    "rules": "Admission rules",
+    "cost": "Tuition fees",
+    "faq": "FAQ",
+    "college_name": "Mangistau College of Tourism"
+  }
+  ,
+  "specialties": {
+    "section_label": "Specialties",
+    "title": "Specialties",
+    "college": "Mangistau College of Tourism",
+    "more_btn": "Learn more",
+    "prev": "Previous",
+    "next": "Next",
+    "items": {
+      "s1": { "title": "Welding", "desc": "Training specialists in welding technologies and metalworking." },
+      "s2": { "title": "Traffic management", "desc": "Training in organizing and ensuring road traffic safety." },
+      "s3": { "title": "Underground mining development", "desc": "Specialty in mine exploration and extraction operations." },
+      "s4": { "title": "Electrical equipment of power plants", "desc": "Training specialists in maintenance of electrical installations." },
+      "s5": { "title": "Maintenance and repair", "desc": "Repair and maintenance of mining and electromechanical equipment." },
+      "s6": { "title": "Thermal power installations", "desc": "Training in operation of thermal and power installations." }
+    }
   }
 }

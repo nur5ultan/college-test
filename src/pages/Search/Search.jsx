@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import api from '../../api/axios';
 import styles from './Search.module.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Search(){
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const q = searchParams.get('q') || '';
   const [loading, setLoading] = useState(false);
@@ -35,13 +37,13 @@ export default function Search(){
   return (
     <div className={styles.page}>
       <div className={styles.wrapper}>
-        <h2>Результаты поиска</h2>
-        <p>По запросу: <strong>{q}</strong></p>
+        <h2>{t('search.results','Результаты поиска')}</h2>
+        <p>{t('search.query','По запросу:')} <strong>{q}</strong></p>
 
-        {loading && <div>Загрузка...</div>}
+        {loading && <div>{t('loading','Загрузка...')}</div>}
 
         {!loading && q && items.length === 0 && (
-          <div>Нет результатов</div>
+          <div>{t('search.no_results','Нет результатов')}</div>
         )}
 
         <div className={styles.grid}>
@@ -49,7 +51,7 @@ export default function Search(){
             <article key={it.id} className={styles.card}>
               <h3>{it.title}</h3>
               <p>{it.description || (it.text && it.text.slice(0,150))}</p>
-              <Link to={`/blogs/${it.slug}`}>Читать</Link>
+              <Link to={`/blogs/${it.slug}`}>{t('search.read','Читать')}</Link>
             </article>
           ))}
         </div>

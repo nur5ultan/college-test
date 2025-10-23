@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Admin.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../../api/axios';
 
 // === Super User credentials ===
@@ -14,6 +15,7 @@ export default function Admin() {
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // проверяем, есть ли логин в localStorage
   useEffect(() => {
@@ -67,19 +69,19 @@ export default function Admin() {
     return (
       <div className={styles.loginWrap}>
         <form className={styles.loginBox} onSubmit={handleLogin}>
-          <h2>Админ панель — вход</h2>
-          <label>Имя администратора
+          <h2>{t('admin.login_title','Админ панель — вход')}</h2>
+          <label>{t('admin.label_username','Имя администратора')}
             <input value={user} onChange={e => setUser(e.target.value)} />
           </label>
-          <label>Пароль
+          <label>{t('admin.label_password','Пароль')}
             <input type="password" value={pass} onChange={e => setPass(e.target.value)} />
           </label>
           <div className={styles.actions}>
-            <button type="submit">Войти</button>
+            <button type="submit">{t('admin.login_button','Войти')}</button>
           </div>
           <p className={styles.foot}>
-            Используйте: admin / secret (Laravel API) <br />
-            или superuser / super12345 (Super User)
+            {t('admin.hint','Используйте: admin / secret (Laravel API)')} <br />
+            {t('admin.hint_super','или superuser / super12345 (Super User)')}
           </p>
         </form>
       </div>
@@ -93,22 +95,22 @@ export default function Admin() {
   return (
     <div>
       <div className={styles.header}>
-        <h2>Админ панель</h2>
-        <button onClick={handleLogout} className={styles.logout}>Выйти</button>
+        <h2>{t('admin.panel_title','Админ панель')}</h2>
+        <button onClick={handleLogout} className={styles.logout}>{t('admin.logout','Выйти')}</button>
       </div>
 
       <div className={styles.adminPanel}>
          {/* Доступ только суперюзеру */}
         {isSuperUser && (
           <button className={styles.buttonAdmin} onClick={() => navigate('/admin/users')}>
-            Пользователи
+            {t('admin.users','Пользователи')}
           </button>
         )}
-        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/news")}>Добавить новость</button>
-        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/ads")}>Добавить объявления</button>
-        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/galery")}>Добавить галерею</button>
-        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/guide")}>Добавить руководство колледжа</button>
-        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/document")}>Добавить документы</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/news")}>{t('admin.add_news','Добавить новость')}</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/ads")}>{t('admin.add_ads','Добавить объявления')}</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/galery")}>{t('admin.add_galery','Добавить галерею')}</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/guide")}>{t('admin.add_guide','Добавить руководство колледжа')}</button>
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/document")}>{t('admin.add_documents','Добавить документы')}</button>
       </div>
     </div>
   );

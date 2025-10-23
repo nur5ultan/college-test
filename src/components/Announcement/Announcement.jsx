@@ -1,6 +1,8 @@
 import styles from './Announcement.module.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Announcement({ item }){
+  const { t } = useTranslation();
   if(!item) return null;
   const { title, date, excerpt, image } = item;
   return (
@@ -13,7 +15,7 @@ export default function Announcement({ item }){
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.excerpt}>{excerpt}</p>
-        <button className={styles.more} type="button">подробнее →</button>
+        <button className={styles.more} type="button">{t('announcement.more','подробнее →')}</button>
       </div>
     </article>
   );
