@@ -86,8 +86,6 @@ export default function Home(){
           ]}
         />
 
-        {/* <img src="/images/god.png" className={styles.godImg} alt="" /> */}
-
         <SliderSpecialties />
 
   <h1>{t('home.announcements','Объявления и мероприятия')}</h1>

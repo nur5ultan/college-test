@@ -1,3 +1,4 @@
+import DirectorBlog from '../../components/DirectorBlog/DirectorBlog';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Students.module.css';
@@ -6,15 +7,23 @@ import { useTranslation } from 'react-i18next';
 export default function Students(){
     const { t } = useTranslation();
     return(
-        <div>
+        <div className={styles.container}> 
             <Header />
-               <h1 className={styles.title}>{t('students.title','Студентам')}</h1>
+            <div className={styles.directorBlog}>
+                <DirectorBlog />
+            </div>
+             <div className={styles.header}>
+                <div className={styles.headerInner}>
+                    <h1 className={styles.title}>{t('students.title','Студентам')}</h1>
+                    <p className={styles.subtitle}>{t('students.subtitle','Информация для студентов')}</p>
+                </div>
+            </div>
                <p className={styles.p}>{t('students.intro','Колледжге қабылданған кезде студенттерге арналған жол сілтеуші көмек көрсетеді.')}</p>
                 <p className={styles.p}>{t('students.leaders','2019-2020 оқу жылының топ жетекшілері:')}</p>
                 <p className={styles.p}>{t('students.timetable_label','қоңырау кестесі')}</p>
                 <p>&nbsp;</p>
                 <p>1 ауысым</p>
-                <table border="1px">
+                <table border="1px" className={styles.timetable}>
                 <tbody>
                 <tr>
                 <td width="159">Қос сабақ</td>
@@ -74,7 +83,7 @@ export default function Students(){
                 </table>
                 <p>&nbsp;</p>
                 <p>2 ауысым</p>
-                <table border="1px">
+                <table border="1px" className={styles.timetable}>
                 <tbody>
                 <tr>
                 <td width="159">қоссабақ</td>

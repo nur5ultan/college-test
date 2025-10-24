@@ -1,0 +1,98 @@
+.about {
+  width: 100%;
+  color: #222;
+  line-height: 1.6;
+  padding: 20px 0;
+}
+
+.siteContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  margin-top: 3%;
+  width: 70%;
+  max-height: 400px;
+  object-fit: cover;
+  border-bottom: 3px solid #eee;
+}
+
+.container {
+  max-width: 1100px;
+  width: 90%;
+  margin: 40px auto;
+}
+
+.innerWrapper {
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.entryContent p {
+  margin-bottom: 40px;
+  text-align: start;
+  margin-top: -35px;
+}
+
+.entryContent ul {
+  padding-left: 20px;
+  margin-bottom: 45px;
+  text-align: start;
+}
+
+.entryContent li {
+  margin-bottom: 5px;
+}
+
+.directorBlog{
+	position: relative;
+	right: 11%;
+	margin-top: 40px;
+	margin-bottom: 60px;
+	margin-right: 83%;
+}
+
+
+.header{
+	background: #003363;
+	color: #fff;
+	padding: 48px 20px;
+	border-bottom-left-radius: 18px;
+	border-bottom-right-radius: 18px;
+  width: 1089px;
+  margin-left: 7%;
+	margin-top: -524px;
+}
+
+.headerInner{
+	max-width: 1100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.title{
+	margin: 0 0 8px;
+	font-size: 36px;
+	letter-spacing: 0.2px;
+}
+
+.subtitle{
+	margin: 0;
+	color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .innerWrapper {
+    padding: 20px;
+  }
+
+  .image {
+    max-height: 250px;
+  }
+}

@@ -93,7 +93,6 @@ export default function Director(){
 
             <h3 className={styles.sectionTitle}>{t('director.latest_posts','Последние публикации')}</h3>
             <div className={styles.postsGrid}>
-              {/* Пример карточек — можно заменить на компонент списка публикаций */}
               <article className={styles.postCard}>
                 <h4 className={styles.postTitle}>{t('director.post_news','Новости колледжа и важные объявления')}</h4>
                 <p className={styles.postExcerpt}>{t('director.post_excerpt','Краткий анонс публикации директора. Дата и превью текста.')}</p>

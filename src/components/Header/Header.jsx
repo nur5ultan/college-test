@@ -52,7 +52,7 @@ export default function Header() {
                     <Link to={'/specialties'} className={styles.language}>{t('menu.spec','Специальности')}</Link>
                     <Link to={'/applicants'} className={styles.language}>{t('menu.applicants','Абитуриентам')}</Link>
                     <Link to={'/students'} className={styles.language}>{t('menu.students','Студентам')}</Link>
-                    <Link to={'#'} className={styles.language}>{t('menu.teachers','Преподавателям')}</Link>
+                    <Link to={'/teachers'} className={styles.language}>{t('menu.teachers','Преподавателям')}</Link>
                     <Link to={'/contacts'} className={styles.language}>{t('menu.contacts','Контакты')}</Link>
                 </div>
             </div>
