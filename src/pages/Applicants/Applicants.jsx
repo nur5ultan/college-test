@@ -15,11 +15,10 @@ export default function Applicants() {
             </div>
             <div className={styles.header}>
                 <div className={styles.headerInner}>
-                    <h1 className={styles.title}>{t('students.title','Студентам')}</h1>
-                    <p className={styles.subtitle}>{t('students.subtitle','Информация для студентов')}</p>
+                    <h1 className={styles.title}>{t('students.title','Абитуриентам')}</h1>
+                    <p className={styles.subtitle}>{t('students.subtitle','Информация для aбитуриентов')}</p>
                 </div>
             </div>
-            <h1 className={styles.title}>{t('applicants.title','Абитуриентам')} </h1>
 
             <Footer />
         </div>
