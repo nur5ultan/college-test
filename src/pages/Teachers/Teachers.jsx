@@ -14,8 +14,8 @@ export default function Teachers() {
             </div>
              <div className={styles.header}>
                 <div className={styles.headerInner}>
-                    <h1 className={styles.title}>{t('students.title','Абитуриентам')}</h1>
-                    <p className={styles.subtitle}>{t('students.subtitle','Информация для aбитуриентов')}</p>
+                    <h1 className={styles.title}>{t('students.title','Преподавателям')}</h1>
+                    <p className={styles.subtitle}>{t('students.subtitle','Информация для преподавателей')}</p>
                 </div>
             </div>
             <Footer />

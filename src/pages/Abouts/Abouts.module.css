@@ -2,7 +2,6 @@
   width: 100%;
   color: #222;
   line-height: 1.6;
-  padding: 20px 0;
 }
 
 .siteContent {
@@ -22,12 +21,12 @@
 .container {
   max-width: 1100px;
   width: 90%;
-  margin: 40px auto;
 }
 
 .innerWrapper {
   padding: 30px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 .entryContent p {
@@ -58,12 +57,11 @@
 .header{
 	background: #003363;
 	color: #fff;
-	padding: 48px 20px;
+	padding: 32px 20px;
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
-  width: 1089px;
-  margin-left: 7%;
-	margin-top: -524px;
+	max-width: 1100px;
+	margin: 8px auto 0;
 }
 
 .headerInner{
