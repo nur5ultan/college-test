@@ -2,9 +2,17 @@
   "director": {
     "title": "Director of the College",
     "subtitle": "News, messages and director's blog",
-    "contact": "Contact",
-    "address": "Address",
-    "about_text": "Director information will be placed here. Short biography or information about professional experience, mission and goals.",
+    "about": "Appeal",
+    "contact": "Reception: +7 (7292) 60-51-56",
+    "email": "Email: j_sarmurzina@mail.ru",
+    "about_director": "Director's Biography",
+    "about_text": "Zhaniya Onalbayeva Sarmurzina is an experienced and dedicated leader in the field of education. She was born in the Mangystau region. She holds a higher education degree from the A.S. Pushkin Oral Pedagogical Institute, majoring in Kazakh Language and Literature Teaching. She also holds a Master’s degree in Technical Sciences.",
+    "career_title": "Career Path",
+    "career": "She began her career in education. From 1992 to 1996, she worked as a teacher in the schools of the village of Shetpe, Mangystau region. From 1996 to 2004, she was a teacher at secondary school No. 20 in Aktau. From 2003 to 2013, she served as the deputy director for scientific and methodological work at the Mangystau Polytechnic College. Since 2013, she has worked in the Department of Technical and Vocational Education of the Mangystau Regional Education Administration. Since September 2025, she has been appointed as the director of the Mangistau College of Tourism.",
+    "professional_achievements": "Professional Achievements",
+    "achievements": "• Teaching experience of over 30 years; \n • Awarded a letter of appreciation from the President of the Republic of Kazakhstan, a commendation and letter of appreciation from the Ministry of Education and Science of the Republic of Kazakhstan, the badge of honor \"Honorary Worker of Education of the Republic of Kazakhstan\", and the honorary diploma of the Ministry of Education of the Republic of Kazakhstan \"Best Worker of the Technical and Vocational Education System\";\n• Supports the introduction of modern educational technologies in the college;\n• Pays special attention to the development of the dual education system and the improvement of practice-oriented education;\n• Establishes partnerships with enterprises in the tourism and service sectors;\n• Supports projects aimed at the professional, personal, and creative development of students.",
+    "Principles": "Leadership Principles and Values",
+    "principles_text": "Motto: “Quality education is the key to a bright future.” Under Zhaniya Onalbayeva’s leadership, the college’s main goal is to train highly qualified specialists in the field of tourism and services who will contribute to the socio-economic development of the region. She actively promotes quality improvement in education, the implementation of innovative teaching methods, and the systematic development of educational and moral programs, thereby strengthening the reputation of the college.",
     "write_message": "Write a message to the director",
     "latest_posts": "Latest posts",
     "post_news": "College news and important announcements",
@@ -13,10 +21,24 @@
     "post_reports_excerpt": "Short description of past events and achievements.",
     "read": "read →"
   },
+
+ "directorblog": {
+    "name": "Sarmurzina Zhaniya Onalbayeva",
+    "position": "Director",
+    "title": "Director of the College",
+    "subtitle": "News, messages and director's blog",
+    "about": "Appeal",
+    "contact": "Phone: +7 (7292) 60-51-56",
+    "email": "Email: j_sarmurzina@mail.ru",
+    "read_more": "Read the blog"
+  },
+
+
   "search": {
     "placeholder": "Search the site...",
     "find": "Find"
   },
+
   "feedback": {
     "email": "Your Email",
     "message": "Message",
@@ -61,12 +83,11 @@
     "prev": "Previous",
     "next": "Next",
     "items": {
-      "s1": { "title": "Welding", "desc": "Training specialists in welding technologies and metalworking." },
-      "s2": { "title": "Traffic management", "desc": "Training in organizing and ensuring road traffic safety." },
-      "s3": { "title": "Underground mining development", "desc": "Specialty in mine exploration and extraction operations." },
-      "s4": { "title": "Electrical equipment of power plants", "desc": "Training specialists in maintenance of electrical installations." },
-      "s5": { "title": "Maintenance and repair", "desc": "Repair and maintenance of mining and electromechanical equipment." },
-      "s6": { "title": "Thermal power installations", "desc": "Training in operation of thermal and power installations." }
+      "s1": { "title": "Hotel business", "desc": "10130100-Hotel business \nквалификация 4S10130104-Супервайзер\n" },
+      "s2": { "title": "Food organization", "desc": "10130300-Food organization \nквалификации 3W10130302-Повар, 3W10130301-Кондитер-оформитель, 4S10130303-Технолог" },
+      "s3": { "title": "Tourism", "desc": "10150100-Tourism \nквалификация 4S10150104-Менеджер по туризму" },
+      "s4": { "title": "Translation", "desc": "02310100-Translation (по видам)\nквалификация 4S02310101-Переводчик\n" },
+      "s5": { "title": "Marketing", "desc": "04140100-Marketing (по отраслям)\nквалификация 4S04140103-Маркетолог\n" }
     }
   }
 }

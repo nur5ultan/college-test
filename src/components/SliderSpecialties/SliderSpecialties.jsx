@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from './SliderSpecialties.module.css';
 import { useTranslation } from 'react-i18next';
 
-const specialtiesIds = ['s1','s2','s3','s4','s5','s6'];
+const specialtiesIds = ['s1','s2','s3','s4','s5'];
 
 export default function SliderSpecialties() {
     const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function SliderSpecialties() {
         id,
         title: t(`specialties.items.${id}.title`),
         desc: t(`specialties.items.${id}.desc`),
-        icon: `/images/${id === 's3' ? 'teacher-icon' : id === 's2' || id === 's6' ? 'building-icon' : id === 's4' ? 'dorm-icon' : 'student-icon'}.png`
+        icon: `/images/${id === 's1' ? 'hotel' : id === 's2' ? 'eat' : id === 's3' ? 'tourism' : id === 's4' ? 'translate' : 'marketing'}.png`
     }));
 
     const settings = {
