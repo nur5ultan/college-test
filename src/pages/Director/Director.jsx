@@ -59,20 +59,26 @@ export default function Director(){
             <div className={styles.avatarWrap}>
               <img className={styles.avatar} src="/images/director.jpg" alt="Директор колледжа" />
             </div>
-            <h2 className={styles.name}>ФИО Директора</h2>
-            <p className={styles.position}>Директор Карагандинского высшего политехнического колледжа</p>
+            <h2 className={styles.name}>Сармурзина Жания Оналбаевна</h2>
+            <p className={styles.position}>Директор ГККП «Мангистауский колледж туризма»</p>
 
             <div className={styles.contacts}>
-              <a href="tel:+77000000000">+7 (700) 000-00-00</a>
-              <a href="mailto:director@college.kz">director@college.kz</a>
+              <p>{t('director.contact')}</p>
+              <p>{t('director.email')}</p>
             </div>
           </aside>
 
           <article className={styles.content}>
-            <h3 className={styles.sectionTitle}>{t('director.address','Обращение')}</h3>
-            <p>{t('director.about_text','Информация о директоре колледжа будет размещена здесь. Краткая биография или информация о профессиональном опыте, миссии и целях.')}</p>
-
-            <h3 className={styles.sectionTitle}>{t('director.write_message','Написать сообщение директору')}</h3>
+            <h3 className={styles.sectionTitle}>{t('director.about')}</h3>
+            <h3 className={styles.directorH3}>{t('director.about_director')}</h3>
+            <p className={styles.directorAboutText}>{t('director.about_text')}</p>
+            <h3 className={styles.directorH3}>{t('director.career_title')}</h3>
+            <p className={styles.directorAboutText}>{t('director.career')}</p>
+            <h3 className={styles.directorH3}>{t('director.professional_achievements')}</h3>
+            <p className={styles.directorAboutText}>{t('director.achievements')}</p>
+            <h3 className={styles.directorH3}>{t('director.Principles')}</h3>
+            <p className={styles.directorAboutText}>{t('director.principles_text')}</p>
+            <h3 className={styles.sectionTitle}>{t('director.write_message')}</h3>
 
             <div className={styles.formWrap}>
               <form className={styles.feedbackForm} onSubmit={handleSubmit}>

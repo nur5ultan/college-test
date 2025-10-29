@@ -12,11 +12,11 @@ export default function About(){
                     <DirectorBlog />
                 </div>
                  <div className={styles.header}>
-                <div className={styles.headerInner}>
-                    <h1 className={styles.title}>{t('students.title','О нас')}</h1>
-                    <p className={styles.subtitle}>{t('students.subtitle','Информация про колледж')}</p>
-                </div>
-            </div>
+                    <div className={styles.headerInner}>
+                        <h1 className={styles.title}>{t('students.title','О нас')}</h1>
+                        <p className={styles.subtitle}>{t('students.subtitle','Информация про колледж')}</p>
+                    </div>
+                 </div>
                 <div id="content" className={styles.siteContent}>
                 <img src="/images/about.jpg" alt="О колледже" className={styles.image} />
 
