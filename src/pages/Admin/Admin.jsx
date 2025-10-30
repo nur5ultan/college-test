@@ -106,6 +106,7 @@ export default function Admin() {
             {t('admin.users','Пользователи')}
           </button>
         )}
+        <button className={styles.buttonAdmin} onClick={() => navigate("/admin/feedback")}>{t('admin.add_news','Обратный связь')}</button>
         <button className={styles.buttonAdmin} onClick={() => navigate("/admin/news")}>{t('admin.add_news','Добавить новость')}</button>
         <button className={styles.buttonAdmin} onClick={() => navigate("/admin/ads")}>{t('admin.add_ads','Добавить объявления')}</button>
         <button className={styles.buttonAdmin} onClick={() => navigate("/admin/galery")}>{t('admin.add_galery','Добавить галерею')}</button>

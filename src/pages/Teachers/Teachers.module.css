@@ -6,7 +6,7 @@
 	border-bottom-right-radius: 18px;
 	max-width: 1090px;
 	margin: 8px auto;
-	margin-top: -535px;
+	margin-top: -400px;
 	margin-left: 84px;
 }
 
@@ -29,8 +29,13 @@
 
 .directorBlog{
 	position: relative;
-	right: 12%;
+	right: 11%;
 	margin-top: 40px;
 	margin-bottom: 60px;
 	margin-right: 83%;
+}
+
+.container{
+	width: 80%;
+	margin: 0 auto;
 }

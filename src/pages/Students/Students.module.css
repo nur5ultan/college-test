@@ -1,8 +1,5 @@
 .container{
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 .p{
@@ -36,10 +33,10 @@
 	padding: 32px 20px;
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
-	max-width: 1040px;
+	max-width: 1090px;
 	margin: 8px auto;
-	margin-top: -535px;
-	margin-left: 81px;
+	margin-top: -400px;
+	margin-left: 85px;
 }
 
 .headerInner{
@@ -61,7 +58,7 @@
 
 .directorBlog{
 	position: relative;
-	right: 14%;
+	right: 11%;
 	margin-top: 40px;
 	margin-bottom: 60px;
 	margin-right: 83%;

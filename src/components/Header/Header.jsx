@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ScreenReader from '../ScreenReader/ScreenReader';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -41,6 +42,9 @@ export default function Header() {
                         <button type="button" onClick={()=>changeLang('ru')} className={`${styles.language} ${i18n.language === 'ru' ? styles.activeLang : ''}`}>RU</button>
                     </div>
                     <div className={styles.headerTopRight}>
+                        <div className={styles.screenReader}>
+                            <ScreenReader />
+                        </div>
                         <Link to={'https://www.facebook.com/mkt.aktau/'}><img src="/images/facebook.png" className={styles.socialImg} alt="facebook"/></Link>
                         <Link to={'https://www.youtube.com/'}><img src="/images/youtube.png" className={styles.socialImg} alt="youtube"/></Link>
                         <Link to={'https://www.instagram.com/mangistau_college_tourism/'}><img src="/images/insta.png" className={styles.socialImg} alt="instagram"/></Link>
@@ -58,10 +62,10 @@ export default function Header() {
             </div>
 
             <div className={styles.headerRight}>
-                <button className={styles.button} aria-label={t('search.open','Открыть поиск')} onClick={()=>setOpen(s=>!s)}>
+                <button className={styles.button} aria-label={t('search.open')} onClick={()=>setOpen(s=>!s)}>
                     <img src="/images/search.png" className={styles.instrumentImg} alt={t('search.icon_alt','Поиск')} />
                 </button>
-                <button className={styles.button} aria-label={t('menu.open_sidebar','Открыть меню')} onClick={()=>setSidebar(s=>!s)}>
+                <button className={styles.button} aria-label={t('menu.open_sidebar')} onClick={()=>setSidebar(s=>!s)}>
                     <img src="/images/burger.png" className={styles.instrumentImg} alt={t('menu.burger_alt','Меню')} />
                 </button>
             </div>
@@ -81,9 +85,8 @@ export default function Header() {
                                 { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
                                 { to: '/students', label: t('menu.students','Студентам') },
                                 { to: '/contacts', label: t('menu.contacts','Контакты') },
-                                { to: '/rules', label: t('menu.rules','Правила приема') },
+                                { to: '/applicants', label: t('menu.rules','Правила приема') },
                                 { to: '/director', label: t('menu.director','Директор колледжа') },
-                                { to: '/specialties', label: t('menu.specialties','Специальности') },
                             ]} />
                         )}
         </header>

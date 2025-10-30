@@ -17,10 +17,10 @@ export default function Footer(){
 
                 <div className={styles.footer2}>
                     <h1>{t('footer.admission','Поступление')}</h1>
-                    <Link to="/admission">{t('footer.rules','Правила приема')}</Link>
-                    <Link to="/tuition">{t('footer.cost','Стоимость обучения')}</Link>
+                    <Link to="/applicants">{t('footer.rules','Правила приема')}</Link>
+                    <Link to="/specialties">{t('footer.cost','Стоимость обучения')}</Link>
                     <Link to="/director">{t('director.title','Блог директора')}</Link>
-                    <Link to="/faq">{t('footer.faq','Вопрос-ответ')}</Link >
+                    <Link to="/contacts">{t('footer.faq','Вопрос-ответ')}</Link >
                 </div>
                 </div>
 

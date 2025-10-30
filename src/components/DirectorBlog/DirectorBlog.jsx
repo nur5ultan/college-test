@@ -12,8 +12,8 @@ export default function DirectorBlog(){
             <p className={styles.position}>{t('directorblog.subtitle')}</p>
 
             <div className={styles.contacts}>
-              <p>{t('directorblog.contact')}</p>
-              <p>{t('directorblog.email')}</p>
+              {/* <p>{t('directorblog.contact')}</p>
+              <p>{t('directorblog.email')}</p> */}
               <Link to="/director">{t('directorblog.title')}</Link>
             </div>
         </aside>

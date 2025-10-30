@@ -39,6 +39,19 @@
     "find": "Find"
   },
 
+  "accessibility": {
+    "title": "Accessibility Version",
+    "toggle": "Accessibility Settings",
+    "settings": "Accessibility Settings",
+    "close": "Close",
+    "screenReader": "Screen Reader",
+    "active": "Active",
+    "highContrast": "High Contrast",
+    "fontSize": "Font Size",
+    "reset": "Reset Settings",
+    "description": "Settings are saved automatically and applied to all pages of the site."
+  },
+
   "feedback": {
     "email": "Your Email",
     "message": "Message",
@@ -88,6 +101,105 @@
       "s3": { "title": "Tourism", "desc": "10150100-Tourism \nквалификация 4S10150104-Менеджер по туризму" },
       "s4": { "title": "Translation", "desc": "02310100-Translation (по видам)\nквалификация 4S02310101-Переводчик\n" },
       "s5": { "title": "Marketing", "desc": "04140100-Marketing (по отраслям)\nквалификация 4S04140103-Маркетолог\n" }
+    },
+    "detail": {
+      "subtitle": "Learn more about the specialties",
+      "about": "About the specialty",
+      "subjects": "Disciplines",
+      "apply": "Apply",
+      "back_to_list": "← Back to specialties",
+      "not_found": "Specialty not found",
+      "duration_label": "Study Duration",
+      "qualification_label": "Qualification Received",
+      "s1": {
+        "description": "Hotel business is a modern and promising specialty aimed at training qualified professionals for the hospitality industry. Students learn the fundamentals of hotel management, customer service, marketing and reservation systems.",
+        "qualification": "Upon completion of training, graduates receive the qualification '4S10130104 - Supervisor' and can work in various positions in hotels, resorts and other hospitality establishments.",
+        "duration": "2 years 10 months",
+        "subjects": [
+          "Hotel and restaurant business fundamentals",
+          "Hotel service",
+          "Reception and accommodation service",
+          "Restaurant service",
+          "Hotel marketing",
+          "Financial accounting in hotels",
+          "Professional English",
+          "Psychology of customer service",
+          "Hotel equipment and technologies",
+          "Business ethics and etiquette"
+        ]
+      },
+      "s2": {
+        "description": "Food organization is a specialty that trains specialists for the food service industry. Students master cooking technologies, confectionery production and restaurant business management.",
+        "qualification": "Graduates can receive qualifications: '3W10130302 - Cook', '3W10130301 - Pastry decorator', '4S10130303 - Technologist' and work in restaurants, cafes, hotels and other catering establishments.",
+        "duration": "2 years 10 months / 3 years 10 months",
+        "subjects": [
+          "Cooking technology",
+          "Confectionery technology",
+          "Restaurant service",
+          "Food safety and hygiene",
+          "Menu planning and costing",
+          "Kitchen equipment",
+          "Culinary creativity",
+          "Dietary nutrition",
+          "National cuisine",
+          "Restaurant business management"
+        ]
+      },
+      "s3": {
+        "description": "Tourism is a dynamically developing specialty that prepares specialists for the tourism industry. Students study tour planning, excursion activities, tourist routes and customer service in tourism.",
+        "qualification": "Upon graduation, students receive the qualification '4S10150104 - Tourism Manager' and can work in travel agencies, tourist companies, hotels and recreational facilities.",
+        "duration": "3 years 10 months",
+        "subjects": [
+          "Tourism geography",
+          "Tour planning and organization",
+          "Excursion activities",
+          "Tourism psychology",
+          "Tourism marketing",
+          "Tourism law",
+          "Foreign languages in tourism",
+          "Hotel and restaurant business",
+          "Local studies and cultural heritage",
+          "Ecological tourism"
+        ]
+      },
+      "s4": {
+        "description": "Translation is a specialty that trains qualified translators for various fields. Students master translation techniques, work with different types of texts and develop intercultural communication skills.",
+        "qualification": "Graduates receive the qualification '4S02310101 - Translator' and can work as interpreters, written translators, in international companies and government agencies.",
+        "duration": "3 years 10 months",
+        "subjects": [
+          "Translation theory and practice",
+          "Professional foreign language",
+          "Oral translation",
+          "Written translation",
+          "Computer translation technologies",
+          "Cultural studies and intercultural communication",
+          "Business correspondence",
+          "Legal translation",
+          "Technical translation",
+          "Translation ethics"
+        ]
+      },
+      "s5": {
+        "description": "Marketing is a modern specialty that prepares specialists in marketing and advertising. Students study market analysis, brand promotion, digital marketing and customer relationship management.",
+        "qualification": "Upon completion of training, graduates receive the qualification '4S04140103 - Marketing specialist' and can work in marketing departments, advertising agencies and commercial companies.",
+        "duration": "3 years 10 months",
+        "subjects": [
+          "Marketing fundamentals",
+          "Market research",
+          "Advertising and PR",
+          "Digital marketing",
+          "Brand management",
+          "Sales management",
+          "Consumer behavior",
+          "Marketing communications",
+          "Internet marketing",
+          "International marketing"
+        ]
+      }
     }
+  },
+  "nav": {
+    "home": "Home",
+    "specialties": "Specialties"
   }
 }

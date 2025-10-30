@@ -22,7 +22,6 @@
     position: relative;
     z-index: 2;
     color: #fff;
-    /* display: flex; */
     padding-left: 5%;
     height: 100%;
 }
@@ -50,7 +49,7 @@
 
 .videoButton{
     position: relative;
-    top: -40%;
+    top: -25%;
     left: 25%;
     padding: 25px;
     font-size: 18px;
@@ -63,7 +62,7 @@
 
 .playerP{
     position: relative;
-    top: -40%;
+    top: -25%;
     left: 25%;
     font-weight: 700;
 }

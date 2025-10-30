@@ -1,18 +1,19 @@
 import DirectorBlog from '../../components/DirectorBlog/DirectorBlog';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
+import { Link } from 'react-router-dom';
 import styles from './Specialties.module.css';
 import { useTranslation } from 'react-i18next';
 export default function Specialties() {
 
     const { t } = useTranslation();
-    const specialtiesIds = ['s1','s2','s3','s4','s5','s6'];
+    const specialtiesIds = ['s1','s2','s3','s4','s5'];
 
      const specialties = specialtiesIds.map(id => ({
         id,
         title: t(`specialties.items.${id}.title`),
         desc: t(`specialties.items.${id}.desc`),
-        icon: `/images/${id === 's3' ? 'teacher-icon' : id === 's2' || id === 's6' ? 'building-icon' : id === 's4' ? 'dorm-icon' : 'student-icon'}.png`
+        icon: `/images/${id === 's1' ? 'hotel' : id === 's2' ? 'eat' : id === 's3' ? 'tourism' : id === 's4' ? 'translate' : 'marketing'}.png`
     }));
     return (
         <div className={styles.container}>
@@ -35,7 +36,7 @@ export default function Specialties() {
                         <img src={s.icon} alt={t(`specialties.items.${s.id}.title`)} className={styles.cardIcon} />
                         <h4 className={styles.cardTitle}>{s.title}</h4>
                         <p className={styles.cardDesc}>{s.desc}</p>
-                        <button className={styles.cardMore} type="button">{t('specialties.more','Подробнее')}</button>
+                        <Link to={`/specialties/${s.id}`} className={styles.cardMore}>{t('specialties.more','Подробнее')}</Link>
                     </article>
                 ))}
             </div>

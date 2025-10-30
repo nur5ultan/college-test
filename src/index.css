@@ -1,8 +1,79 @@
 body {
   margin: 0;
   font-family: "Montserrat Alternates", sans-serif;
+  transition: font-size 0.3s ease, filter 0.3s ease;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Глобальные стили для доступности */
+body.high-contrast {
+  filter: contrast(150%) brightness(120%) invert(0);
+  background: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast * {
+  border-color: #fff !important;
+}
+
+body.high-contrast a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+body.high-contrast button {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* Размеры шрифтов */
+body.font-size-small {
+  font-size: 14px;
+}
+
+body.font-size-normal {
+  font-size: 16px;
+}
+
+body.font-size-large {
+  font-size: 18px;
+}
+
+body.font-size-extra-large {
+  font-size: 22px;
+}
+
+/* Заголовки для разных размеров шрифта */
+body.font-size-small h1 { font-size: 28px; }
+body.font-size-small h2 { font-size: 24px; }
+body.font-size-small h3 { font-size: 20px; }
+body.font-size-small h4 { font-size: 18px; }
+
+body.font-size-normal h1 { font-size: 32px; }
+body.font-size-normal h2 { font-size: 28px; }
+body.font-size-normal h3 { font-size: 24px; }
+body.font-size-normal h4 { font-size: 20px; }
+
+body.font-size-large h1 { font-size: 40px; }
+body.font-size-large h2 { font-size: 32px; }
+body.font-size-large h3 { font-size: 26px; }
+body.font-size-large h4 { font-size: 22px; }
+
+body.font-size-extra-large h1 { font-size: 48px; }
+body.font-size-extra-large h2 { font-size: 38px; }
+body.font-size-extra-large h3 { font-size: 30px; }
+body.font-size-extra-large h4 { font-size: 26px; }
+
+/* Улучшенная читаемость */
+body.font-size-large,
+body.font-size-extra-large {
+  line-height: 1.6;
+}
+
+body.font-size-extra-large {
+  line-height: 1.8;
 }
