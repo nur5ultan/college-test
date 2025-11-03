@@ -57,7 +57,7 @@ export default function Director(){
         <section className={styles.container}>
           <aside className={styles.profile}>
             <div className={styles.avatarWrap}>
-              <img className={styles.avatar} src="/images/director.jpg" alt="Директор колледжа" />
+              <img className={styles.avatar} src="/images/director.png" alt="Директор колледжа" />
             </div>
             <h2 className={styles.name}>Сармурзина Жания Оналбаевна</h2>
             <p className={styles.position}>Директор ГККП «Мангистауский колледж туризма»</p>

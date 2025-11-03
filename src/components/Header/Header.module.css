@@ -1,211 +1,337 @@
-.headerLogo{
-    position: absolute;
-    top: 5%;
-    left: 4%;
-    
-}
-.logoImg{
-    height: 120px;
-    width: 120px;
-}
-
-.headerCenter{
-    width: 80%;
-    margin-left: 7%;
-    border-bottom: 1px solid #f1f1f1;
-    border-left: 1px solid #f1f1f1;
-    border-right: 1px solid #f1f1f1;
-}
-
-.headerTop{
+header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 5px 20px;
+    align-items: flex-start; /* Изменено для выравнивания по верху */
+    padding: 10px 16px;
+    background: #fff;
     border-bottom: 1px solid #f1f1f1;
-}
-
-.headerTopLeft{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.headerTopRight{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.screenReader{
-    /* Убираем старое позиционирование */
-}
-
-.language{
-    color: #000;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-    background-color: transparent;
-    border: none;
-}
-
-.language:hover{
-    text-decoration: underline;
-    font-weight: 500;
-}
-
-.activeLang{
-    font-weight: 700;
-    color: var(--accent, #6e2aa3);
-}
-
-.socialImg{
-    height: 30px;
-    width: 30px;
-}
-
-.instrumentImg{
     position: relative;
-    bottom: 55%;
-    height: 40px;
-    width: 40px;
+    z-index: 10;
 }
 
-.headerBottom{
+.headerLogo {
+    position: static;
+    margin-left: -12%;
+    padding: 0;
+}
+
+.logoImg {
+    height: 60px; 
+    width: 60px;
+}
+
+.headerCenter {
+    display: none; 
+}
+
+.headerRight {
+    position: static;
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 30px 55px;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    width: auto;
 }
 
-.headerRight{
-    width: 19%;
-    display: flex;
-    margin-top: -120px;
-    margin-left: 87%;
-}
-
-.button{
-    width: 55%;
-    padding-top: 33%;
+.button {
+    width: auto;
+    padding: 8px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    border-left: 1px solid #f1f1f1;
-    border-bottom: 1px solid #f1f1f1;
-    border-right: 1px solid #f1f1f1;
+    border-radius: 8px;
+    line-height: 1;
 }
 
+.button:hover {
+    background-color: #f5f5f5;
+}
 
-.searchOverlay{
-    position: absolute;
-    right: 6%;
-    top: 18%;
-    background: rgba(255,255,255,0.98);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+.instrumentImg {
+    position: static;
+    height: 28px; 
+    width: 28px;
+}
+
+.searchOverlay {
+    position: fixed; 
+    top: 80px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     z-index: 40;
+    animation: panelSlide 300ms cubic-bezier(.2, .9, .2, 1) forwards;
 }
 
 .searchForm {
     display: flex;
-    align-items: center
+    align-items: center;
+    gap: 8px;
 }
 
 .searchInput {
-    padding: 8px 10px;
-    border-radius: 6px;
-    min-width: 220px
+    width: 100%;
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
 }
 
 .searchBtn {
     background: var(--accent, #6e2aa3);
     color: #fff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
 }
-.sidebarOverlay{
-    position:fixed;
-    top:0; right:0; bottom:0; left:0;
-    background:rgba(0,0,0,0.5);
-    display:flex;
-    justify-content:flex-end;
-    z-index:60;
+
+.sidebarOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 60;
+    animation: overlayFade 360ms ease forwards;
 }
-.sidebar{
-    width:320px;
-    max-width:85%;
-    background:#fff;
-    height:100%;
-    padding:20px;
-    box-shadow:-8px 0 30px rgba(0,0,0,0.12);
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+
+.sidebar {
+    width: 320px;
+    max-width: 85%;
+    background: #fff;
+    height: 100%;
+    padding: 20px;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: translateX(100%);
+    animation: panelSlide 360ms cubic-bezier(.2, .9, .2, 1) forwards;
 }
-.sidebar{
-    transform: translateX(8px);
-    opacity: 0;
-    animation: panelSlide 360ms cubic-bezier(.2,.9,.2,1) forwards;
-}
-.sidebarClose{
-    background:transparent;
-    border:none;
-    font-size:28px;
-    line-height:1;
-    align-self:flex-end;
-    cursor:pointer;
-}
-.sidebarClose{
-    transform-origin:center;
+
+.sidebarClose {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    align-self: flex-end;
+    cursor: pointer;
+    padding: 4px;
+    transform-origin: center;
     animation: closePop 240ms ease 120ms both;
 }
+
 .sidebarNav {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 8px
+    margin-top: 8px;
 }
 
 .sidebarLink {
     color: var(--text, #222);
     text-decoration: none;
     font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 6px;
     opacity: 0;
     transform: translateX(10px);
+    animation: linkFade 360ms cubic-bezier(.2, .9, .2, 1) forwards;
+    animation-delay: calc(var(--i) * 0.06s); /* Немного ускорим анимацию */
 }
 
 .sidebarLink:hover {
-    text-decoration: underline
+    background: #f5f5f5;
+    text-decoration: none;
 }
 
-.sidebarLink {
-    /* stagger using CSS var --i (set inline from JSX) */
-    animation: linkFade 360ms cubic-bezier(.2, .9, .2, 1) forwards;
-    animation-delay: calc(var(--i) * 0.08s);
-}
-@keyframes overlayFade{
-    from{ opacity: 0 }
-    to{ opacity: 1 }
+/* Desktop / Tablet: возвращаем исходную схему и размеры */
+@media (min-width: 1024px) {
+    header {
+        display: block; /* Возвращаем блочное отображение */
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .headerLogo {
+        position: absolute;
+        top: 5%;
+        left: 4%;
+    }
+
+    .logoImg {
+        height: 120px;
+        width: 120px;
+    }
+
+    .headerCenter {
+        display: block; /* Показываем центральную часть */
+        width: 80%;
+        margin-left: 7%;
+        border-bottom: 1px solid #f1f1f1;
+        border-left: 1px solid #f1f1f1;
+        border-right: 1px solid #f1f1f1;
+    }
+
+    .headerTop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 20px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .headerTopLeft {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .headerTopRight {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+    }
+
+    .language {
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+        background-color: transparent;
+        border: none;
+    }
+
+    .language:hover {
+        text-decoration: underline;
+        font-weight: 500;
+    }
+
+    .activeLang {
+        font-weight: 700;
+        color: var(--accent, #6e2aa3);
+    }
+
+    .socialImg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .headerBottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 25px 55px;
+    }
+
+    .headerRight {
+        position: static;
+        width: 19%;
+        display: flex;
+        margin-top: -119px;
+        margin-left: 87%;
+        gap: 0;
+    }
+
+    .button {
+        width: 55%;
+        padding: 0;
+        padding-top: 33%;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        border-left: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        border-right: 1px solid #f1f1f1;
+        border-radius: 0;
+    }
+
+    .button:hover {
+        background-color: transparent;
+    }
+
+    .instrumentImg {
+        position: relative;
+        bottom: 75%;
+        height: 40px;
+        width: 40px;
+    }
+
+    .searchOverlay {
+        position: absolute;
+        right: 6%;
+        top: 18%;
+        left: auto;
+        width: auto;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .searchInput {
+        padding: 8px 10px;
+        border-radius: 6px;
+        min-width: 220px;
+        font-size: 14px;
+    }
+
+    .searchBtn {
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
 }
 
-@keyframes panelSlide{
-    from{ transform: translateX(10px); opacity: 0 }
-    to{ transform: translateX(0); opacity: 1 }
+/* Анимации */
+@keyframes overlayFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-@keyframes linkFade{
-    from{ opacity: 0; transform: translateX(10px) }
-    to{ opacity: 1; transform: translateX(0) }
+@keyframes panelSlide {
+    from {
+        transform: translateX(100%);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-@keyframes closePop{
-    from{ transform: scale(0.6); opacity: 0 }
-    to{ transform: scale(1); opacity: 1 }
+@keyframes linkFade {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes closePop {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 

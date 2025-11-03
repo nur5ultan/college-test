@@ -8,7 +8,6 @@
 
 .videoBackground{
     position: absolute;
-    overlay: calc();
     top: 50%;
     width: 100%;
     height: 100%;
@@ -96,5 +95,22 @@
 
 .map a:hover {
     text-decoration: underline;
+}
+
+/* Mobile-first адаптив для главной страницы */
+@media (max-width: 767px){
+    .hero{
+        right: 0;
+        width: 100%;
+        height: 60vh;
+    }
+    .h1{ font-size: 18px; margin-top: 16px; }
+    .h2{ font-size: 28px; margin-right: 0; }
+    .playerImg{ width: 64px; height: 64px; }
+    .videoButton{ top: 0; left: 0; padding: 16px; font-size: 16px; }
+    .playerP{ top: 0; left: 0; }
+    .godImg{ width: 100%; margin-top: 16px; }
+    .map{ width: 100%; margin-left: 0; }
+    .map iframe{ height: 360px; }
 }
 

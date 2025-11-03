@@ -23,7 +23,7 @@ export default function DirectorProfile(){
       <button className={styles.close} onClick={handleClose} aria-label={t('director.close','Закрыть')}>×</button>
       <div className={styles.inner}>
         <div className={styles.avatarWrap}>
-          <img src="/images/director.jpg" alt={t('director.photo_alt')} className={styles.avatar} />
+          <img src="/images/director.png" alt={t('director.photo_alt')} className={styles.avatar} />
         </div>
         <h3 className={styles.name}>{t('directorblog.name')}</h3>
         <p className={styles.position}>{t('directorblog.position')}</p>

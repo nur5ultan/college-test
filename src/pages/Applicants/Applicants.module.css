@@ -6,8 +6,8 @@
 	border-bottom-right-radius: 18px;
 	max-width: 1090px;
 	margin: 8px auto;
-	margin-top: -400px;
-	margin-left: 85px;
+	margin-top: -447px;
+	margin-left: 84px;
 }
 
 .headerInner{
@@ -38,8 +38,8 @@
 /* Основной контент */
 .content {
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 24px;
+    margin: 20px auto 40px;
+    padding: 0 12px;
 }
 
 /* Быстрые действия */
@@ -140,7 +140,7 @@
     background: #fff;
     border: 1px solid rgba(0,51,99,0.1);
     border-radius: 12px;
-    padding: 32px;
+    padding: 24px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
@@ -561,10 +561,57 @@
 }
 
 /* Адаптивность */
+@media (max-width: 1023px) {
+  .about {
+    position: relative;
+  }
+
+  .directorBlog {
+    position: relative;
+    top: 0;
+    /* left: 13px; */
+    right:3px;
+    width: auto;
+    z-index: 5;
+    margin: 0;
+    margin-bottom: 16px;    
+  }
+
+  .header {
+    position: static;
+    margin: 0;
+    max-width: 100%;
+    border-radius: 18px;
+    padding: 24px 16px;
+  }
+
+  .siteContent {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .image {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 32px 20px;
+  }
+
+
+}
 @media (max-width: 768px) {
-    .content {
-        padding: 0 16px;
-    }
+    .content { padding: 0 12px; }
     
     .actionCards {
         grid-template-columns: 1fr;
@@ -614,26 +661,7 @@
     }
 }
 
-@media (max-width: 480px) {
-    .header {
-        margin-left: 16px;
-        margin-right: 16px;
-        max-width: calc(100% - 32px);
-    }
-    
-    .title {
-        font-size: 28px;
-    }
-    
-    .timeline {
-        padding-left: 24px;
-    }
-    
-    .timelineItem:before {
-        left: -32px;
-    }
-    
-    .timeline:before {
-        left: 12px;
-    }
+@media (min-width: 768px){
+    .header{ padding: 32px 20px; }
+    .content{ padding: 0 20px; }
 }
