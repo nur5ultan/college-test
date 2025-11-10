@@ -1,0 +1,49 @@
+.wrap {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #0a58ca;
+    text-align: center;
+    margin: 0 0 40px;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0a58ca, #5b3b7a);
+    border-radius: 2px;
+}
+
+.directorBlog {
+    margin: 40px 0 60px;
+    padding: 0 5%;
+}
+
+/* Адаптивные стили */
+@media (max-width: 767px) {
+    .wrap {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .directorBlog {
+        margin: 20px 0 40px;
+        padding: 0 3%;
+    }
+}

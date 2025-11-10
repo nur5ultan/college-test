@@ -4,17 +4,16 @@ import Header from "../../components/Header/Header";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useFeedback } from "../../contexts/FeedbackContext";
+import api from "../../api/axios";
 import styles from './Contacts.module.css';
 
 export default function Contacts() {
     const { t } = useTranslation();
     const { addMessage } = useFeedback();
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
+        full_name: '',
+        title: '',
+        text: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState('');
@@ -30,34 +29,28 @@ export default function Contacts() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus('');
         
         try {
-            // Добавляем сообщение в систему Feedback
-            console.log('Отправляем сообщение:', formData);
-            const messageId = addMessage(formData);
-            console.log('Сообщение добавлено с ID:', messageId);
-            
-            // Имитация отправки формы
-            setTimeout(() => {
-                setSubmitStatus('success');
-                setIsSubmitting(false);
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    subject: '',
-                    message: ''
-                });
-                
-                // Очищаем статус через 5 секунд
-                setTimeout(() => {
-                    setSubmitStatus('');
-                }, 5000);
-            }, 1000);
+            // 1) Отправка на бэкенд
+            await api.post('/feedbacks', {
+                full_name: formData.full_name,
+                title: formData.title || '',
+                text: formData.text,
+            });
+
+            // 2) Опционально добавим в локальную систему Feedback (для админки)
+            try { addMessage(formData); } catch {}
+
+            setSubmitStatus('success');
+            setFormData({ full_name: '', title: '', text: '' });
         } catch (error) {
             console.error('Error submitting form:', error);
             setSubmitStatus('error');
+        } finally {
             setIsSubmitting(false);
+            // автоскрытие статуса через 5 секунд
+            if (!isSubmitting) setTimeout(() => setSubmitStatus(''), 5000);
         }
     };
 
@@ -176,14 +169,14 @@ export default function Contacts() {
                             <div className={styles.formRow}>
                                 <input
                                     type="text"
-                                    name="name"
-                                    value={formData.name}
+                                    name="full_name"
+                                    value={formData.full_name}
                                     onChange={handleInputChange}
                                     placeholder={t('contacts.form.name.placeholder', 'Ваше имя')}
                                     className={styles.formInput}
                                     required
                                 />
-                                <input
+                                {/* <input
                                     type="email"
                                     name="email"
                                     value={formData.email}
@@ -191,19 +184,20 @@ export default function Contacts() {
                                     placeholder={t('contacts.form.email.placeholder', 'Email адрес')}
                                     className={styles.formInput}
                                     required
-                                />
+                                /> */}
                             </div>
                             
                             <div className={styles.formRow}>
                                 <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
+                                    type="text"
+                                    name="title"
+                                    value={formData.title}
                                     onChange={handleInputChange}
-                                    placeholder={t('contacts.form.phone.placeholder', 'Номер телефона')}
+                                    placeholder={t('contacts.form.title.placeholder', 'Заголовок')}
                                     className={styles.formInput}
+                                    required
                                 />
-                                <select
+                                {/* <select
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleInputChange}
@@ -215,12 +209,12 @@ export default function Contacts() {
                                     <option value="academic">{t('contacts.form.subject.academic', 'Учебные вопросы')}</option>
                                     <option value="dormitory">{t('contacts.form.subject.dormitory', 'Общежитие')}</option>
                                     <option value="other">{t('contacts.form.subject.other', 'Другое')}</option>
-                                </select>
+                                </select> */}
                             </div>
 
                             <textarea
-                                name="message"
-                                value={formData.message}
+                                name="text"
+                                value={formData.text}
                                 onChange={handleInputChange}
                                 placeholder={t('contacts.form.message.placeholder', 'Ваше сообщение')}
                                 className={styles.formTextarea}

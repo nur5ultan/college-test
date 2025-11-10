@@ -37,7 +37,7 @@
 
 .container{
 	min-height: 80vh;
-	background: var(--bg, #fff);
+	/* background: var(--bg, #fff); */
 }
 
 .section{

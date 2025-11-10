@@ -17,7 +17,6 @@ api.interceptors.response.use(
     }
 );
 
-// add request interceptor to include Authorization header when token exists
 api.interceptors.request.use((config) => {
     try {
         const token = typeof window !== 'undefined' && localStorage.getItem('auth_token');
@@ -26,7 +25,7 @@ api.interceptors.request.use((config) => {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
     } catch (e) {
-        // ignore
+        console.error('Error setting auth token in request:', e);
     }
     return config;
 }, (error) => Promise.reject(error));

@@ -4,8 +4,9 @@ import Header from "../../components/Header/Header";
 import styles from './Home.module.css';
 import Stats from '../../components/Stats/Stats';
 import SliderSpecialties from "../../components/SliderSpecialties/SliderSpecialties";
-import AnnouncementsList from '../../components/Announcement/AnnouncementsList';
+// import AnnouncementsList from '../../components/Announcement/AnnouncementsList';
 import Footer from "../../components/Footer/Footer";
+import NewsList from "../../components/News/NewsList";
 
 
 const videos = ['/video/background.mp4',]
@@ -88,13 +89,19 @@ export default function Home(){
 
         <SliderSpecialties />
 
-  <h1>{t('home.announcements','Объявления и мероприятия')}</h1>
-        <AnnouncementsList />{/* Объявления шақыру керек мына жерге */}
+        <section className={styles.newsSection}>
+          <div className={styles.newsHeader}>
+            <h2 className={styles.newsTitle}>{t('home.news','Новости')}</h2>
+            <a href="/news" className={styles.viewAllLink}>
+              {t('home.view_all_news', 'Смотреть все новости')} →
+            </a>
+          </div>
+          <NewsList limit={4} />
+        </section>
 
-  <h1>{t('home.news','Новости')}</h1>
-  <p>{t('home.news_sub','Мангистауского колледж туризма')}</p>
-
-        {/* Новости шақыру керек мына жерге */}
+{/* instagram Виджет */}
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-f4c5b7c6-0bba-443b-afea-a2a2f0b42c1c" data-elfsight-app-lazy></div>
 
         <div className={styles.map}>
             <div className={styles.mapContainer}>

@@ -80,9 +80,12 @@ export default function Header() {
             )}
                         {typeof window !== 'undefined' && (
                             <Sidebar isOpen={sidebar} onClose={()=>setSidebar(false)} links={[
+                                { to: '/news', label: t('menu.news','Новости') },
+                                { to: '/document', label: t('menu.document','Перечень документов') },
                                 { to: '/about', label: t('menu.about','О нас') },
+                                { to: '/projects', label: t('menu.project','Наши проекты') },
                                 { to: '/specialties', label: t('menu.spec','Специальности') },
-                                { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
+                                // { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
                                 { to: '/students', label: t('menu.students','Студентам') },
                                 { to: '/contacts', label: t('menu.contacts','Контакты') },
                                 { to: '/applicants', label: t('menu.rules','Правила приема') },

@@ -51,6 +51,11 @@
     "reset": "Reset Settings",
     "description": "Settings are saved automatically and applied to all pages of the site."
   },
+  "news_list": {
+    "loading": "Loading news...",
+    "empty": "No news yet",
+    "error": "Failed to load news"
+  },
 
   "feedback": {
     "email": "Your Email",
@@ -70,7 +75,8 @@
     "watch_video": "Watch the college video",
     "announcements": "Announcements & Events",
     "news": "News",
-    "news_sub": "Mangistau College of Tourism"
+    "news_sub": "Mangistau College of Tourism",
+    "view_all_news": "View all news"
   }
   ,
   "loading": "Loading...",
@@ -198,6 +204,23 @@
       }
     }
   },
+
+  "document": {
+    "get": {
+      "title": "Document List",
+      "description": "Here you can find all necessary college documents",
+      "search": "Search documents...",
+      "found": "Found",
+      "documents": "documents",
+      "empty": "No documents yet",
+      "empty_desc": "Documents will appear here after being added by the administrator",
+      "view": "View",
+      "download": "Download",
+      "open": "Open file",
+      "error": "Failed to load documents"
+    }
+  },
+
   "nav": {
     "home": "Home",
     "specialties": "Specialties"

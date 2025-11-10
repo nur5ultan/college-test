@@ -1,118 +1,129 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./News.module.css";
+import api from "../../api/axios"; 
 
 export default function News() {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [description, setDescription] = useState("");
+  const [text, setText] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [editingId, setEditingId] = useState(null);
+  const [editingSlug, setEditingSlug] = useState(null);
   const inputRef = useRef(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const saved = localStorage.getItem("news");
-    if (saved) {
-      setItems(JSON.parse(saved));
-    }
+  // Получаем origin бекенда для картинок (из baseURL без "/api")
+  const API_ORIGIN = useMemo(() => {
+    const base = api?.defaults?.baseURL || '';
+    return base.replace(/\/?api\/?$/, '');
   }, []);
 
-  // --- 2. Сохраняем в localStorage при каждом изменении
+  const buildImageUrl = (image) => {
+    if (!image) return null;
+    if (/^https?:\/\//i.test(image)) return image;
+    if (image.startsWith('/')) return `${API_ORIGIN}${image}`;
+    return `${API_ORIGIN}/${image}`;
+  };
+
+  const fetchNews = async () => {
+    try {
+      const res = await api.get("/blogs");
+      setItems(res.data);
+    } catch (err) {
+      console.error("Ошибка при получении новостей:", err);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem("news", JSON.stringify(items));
-  }, [items]);
+    fetchNews();
+  }, []);
 
-  function resetForm() {
-    setTitle("");
-    setContent("");
-    setImageFile(null);
-    setEditingId(null);
-    if (inputRef.current) inputRef.current.value = null;
-  }
-
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let imageUrl = null;
-    if (imageFile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const newItem = {
-          id: editingId || Date.now(),
-          title,
-          content,
-          image: reader.result,
-        };
-        saveItem(newItem);
-      };
-      reader.readAsDataURL(imageFile);
-    } else {
-      const newItem = {
-        id: editingId || Date.now(),
-        title,
-        content,
-        image: null,
-      };
-      saveItem(newItem);
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("text", text);
+      if (imageFile) formData.append("image", imageFile);
+
+      const token = localStorage.getItem('auth_token');
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+      if (editingSlug) {
+        await api.post(`/blogs/${editingSlug}?_method=PUT`, formData, {
+          headers: { "Content-Type": "multipart/form-data", ...authHeaders },
+        });
+        alert("Новость обновлена!");
+      } else {
+        await api.post("/blogs", formData, {
+          headers: { "Content-Type": "multipart/form-data", ...authHeaders },
+        });
+        alert("Новость добавлена!");
+      }
+
+      resetForm();
+      fetchNews();
+    } catch (err) {
+      console.error("Ошибка при отправке новости:", err.response || err);
+      alert("Ошибка при сохранении новости!");
     }
-  }
+  };
 
-  function saveItem(newItem) {
-    if (editingId) {
-      setItems((prev) =>
-        prev.map((it) => (it.id === editingId ? newItem : it))
-      );
-      alert("Новость обновлена!");
-    } else {
-      setItems((prev) => [newItem, ...prev]);
-      alert("Новость добавлена!");
-    }
-    resetForm();
-  }
+  const resetForm = () => {
+    setTitle("");
+    setDescription("");
+    setText("");
+    setImageFile(null);
+    setEditingSlug(null);
+    if (inputRef.current) inputRef.current.value = null;
+  };
 
-  function handleEdit(item) {
-    setEditingId(item.id);
-    setTitle(item.title || "");
-    setContent(item.content || "");
-  }
-
-  function handleDelete(id) {
+  //  Удаление
+  const handleDelete = async (slug) => {
     if (!window.confirm("Удалить новость?")) return;
-    setItems((prev) => prev.filter((it) => it.id !== id));
-  }
+    try {
+      const token = localStorage.getItem('auth_token');
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+      await api.delete(`/blogs/${slug}`, { headers: authHeaders });
+      setItems((prev) => prev.filter((it) => it.slug !== slug));
+    } catch (err) {
+      console.error("Ошибка при удалении:", err);
+    }
+  };
+
+  //  Редактирование
+  const handleEdit = (item) => {
+    setEditingSlug(item.slug);
+    setTitle(item.title);
+    setDescription(item.description);
+    setText(item.text);
+  };
 
   return (
     <div className={styles.wrap}>
-        <button
-        onClick={() => navigate("/admin")}
-        className={styles.buttonBack}>
+      <button onClick={() => navigate("/admin")} className={styles.buttonBack}>
         ←
-        </button>
-      <div className={styles.left}>
-        <h2>{editingId ? "Редактировать новость" : "Добавить новость"}</h2>
+      </button>
 
-        <form
-          onSubmit={handleSubmit}
-          className={styles.form}
-          encType="multipart/form-data"
-        >
+      <div className={styles.left}>
+        <h2>{editingSlug ? "Редактировать новость" : "Добавить новость"}</h2>
+
+        <form onSubmit={handleSubmit} className={styles.form}>
           <label>
             Заголовок
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
+            <input value={title} onChange={(e) => setTitle(e.target.value)} required />
+          </label>
+
+          <label>
+            Краткое описание
+            <input value={description} onChange={(e) => setDescription(e.target.value)} required />
           </label>
 
           <label>
             Текст
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-            />
+            <textarea value={text} onChange={(e) => setText(e.target.value)} required />
           </label>
 
           <label>
@@ -127,13 +138,9 @@ export default function News() {
 
           <div className={styles.actions}>
             <button type="submit" className={styles.save}>
-              {editingId ? "Сохранить" : "Добавить"}
+              {editingSlug ? "Сохранить" : "Добавить"}
             </button>
-            <button
-              type="button"
-              className={styles.cancel}
-              onClick={resetForm}
-            >
+            <button type="button" className={styles.cancel} onClick={resetForm}>
               Очистить
             </button>
           </div>
@@ -146,27 +153,23 @@ export default function News() {
 
         <div className={styles.grid}>
           {items.map((it) => (
-            <div key={it.id} className={styles.card}>
+            <div key={it.slug} className={styles.card}>
               {it.image && (
                 <div
                   className={styles.thumb}
-                  style={{ backgroundImage: `url(${it.image})` }}
+                  style={{
+                    backgroundImage: `url(${buildImageUrl(it.image)})`,
+                  }}
                 />
               )}
               <div className={styles.info}>
-                <h3 className={styles.itemTitle}>{it.title}</h3>
-                <p className={styles.itemExcerpt}>{it.content}</p>
+                <h3>{it.title}</h3>
+                <p>{it.description}</p>
                 <div className={styles.cardActions}>
-                  <button
-                    onClick={() => handleEdit(it)}
-                    className={styles.edit}
-                  >
+                  <button onClick={() => handleEdit(it)} className={styles.edit}>
                     Редактировать
                   </button>
-                  <button
-                    onClick={() => handleDelete(it.id)}
-                    className={styles.delete}
-                  >
+                  <button onClick={() => handleDelete(it.slug)} className={styles.delete}>
                     Удалить
                   </button>
                 </div>

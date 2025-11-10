@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFeedback } from '../../contexts/FeedbackContext';
+import api from '../../api/axios';
 import styles from './Feedback.module.css';
 
 export default function Feedback() {
@@ -8,39 +9,80 @@ export default function Feedback() {
     const { messages, addMessage, markAsRead, updateMessageStatus, deleteMessage } = useFeedback();
     const [selectedMessage, setSelectedMessage] = useState(null);
     const [filterStatus, setFilterStatus] = useState('all');
+    const [remoteMessages, setRemoteMessages] = useState([]);
+    const [useRemote, setUseRemote] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     console.log('Feedback component: Сообщения в компоненте', messages);
 
-    // Отслеживаем изменения сообщений
+    // Загружаем сообщения с бэкенда (GET /feedbacks) — если доступно, показываем их, иначе fallback на локальный контекст
+    useEffect(() => {
+        let mounted = true;
+        (async () => {
+            setLoading(true);
+            setError('');
+            try {
+                const token = typeof window !== 'undefined' && localStorage.getItem('auth_token');
+                const res = await api.get('/feedbacks', token ? { headers: { Authorization: `Bearer ${token}` } } : {});
+                const list = Array.isArray(res.data) ? res.data : (res.data?.data || []);
+                const mapped = list.map((b, idx) => ({
+                    id: b.id ?? b._id ?? `fb_${idx}_${Date.now()}`,
+                    name: b.full_name || b.name || '—',
+                    email: b.email || '',
+                    phone: b.phone || '',
+                    subject: b.title || '',
+                    message: b.text || '',
+                    timestamp: new Date(b.created_at || b.updated_at || Date.now()).getTime(),
+                    status: 'new',
+                    isRead: false,
+                }));
+                if (!mounted) return;
+                setRemoteMessages(mapped);
+                setUseRemote(true);
+            } catch (err) {
+                console.warn('GET /feedbacks failed, fallback to local context', err?.response || err);
+                if (!mounted) return;
+                setUseRemote(false);
+                setError('');
+            } finally {
+                if (mounted) setLoading(false);
+            }
+        })();
+        return () => { mounted = false; };
+    }, []);
+
+    // Отслеживаем изменения сообщений локального контекста (для отладки)
     useEffect(() => {
         console.log('Feedback component: useEffect - изменения сообщений', messages);
     }, [messages]);
 
-    // Функция для добавления тестового сообщения
-    const addTestMessage = () => {
-        const testMessage = {
-            name: 'Тестовый пользователь',
-            email: 'test@example.com',
-            phone: '+7 777 123 45 67',
-            subject: 'Тестовое сообщение',
-            message: 'Это тестовое сообщение для проверки работы системы обратной связи.'
-        };
-        addMessage(testMessage);
-    };
-
     const handleMessageClick = (message) => {
         if (!message.isRead) {
-            markAsRead(message.id);
+            if (useRemote) {
+                setRemoteMessages(prev => prev.map(m => m.id === message.id ? { ...m, isRead: true } : m));
+            } else {
+                markAsRead(message.id);
+            }
         }
         setSelectedMessage(message);
     };
 
     const handleStatusChange = (messageId, newStatus) => {
-        updateMessageStatus(messageId, newStatus);
+        if (useRemote) {
+            setRemoteMessages(prev => prev.map(m => m.id === messageId ? { ...m, status: newStatus } : m));
+            setSelectedMessage(s => s && s.id === messageId ? { ...s, status: newStatus } : s);
+        } else {
+            updateMessageStatus(messageId, newStatus);
+        }
     };
 
     const handleDelete = (messageId) => {
-        deleteMessage(messageId);
+        if (useRemote) {
+            setRemoteMessages(prev => prev.filter(m => m.id !== messageId));
+        } else {
+            deleteMessage(messageId);
+        }
         if (selectedMessage && selectedMessage.id === messageId) {
             setSelectedMessage(null);
         }
@@ -74,7 +116,8 @@ export default function Feedback() {
         }
     };
 
-    const filteredMessages = messages.filter(message => {
+    const source = useRemote ? remoteMessages : messages;
+    const filteredMessages = source.filter(message => {
         if (filterStatus === 'all') return true;
         if (filterStatus === 'unread') return !message.isRead;
         return message.status === filterStatus;
@@ -86,14 +129,17 @@ export default function Feedback() {
                 <h2 className={styles.title}>{t('feedback.title', 'Обратная связь')}</h2>
                 <div className={styles.stats}>
                     <span className={styles.totalCount}>
-                        {t('feedback.total', 'Всего')}: {messages.length}
+                        {t('feedback.total', 'Всего')}: {source.length}
                     </span>
                     <span className={styles.unreadCount}>
-                        {t('feedback.unread', 'Непрочитанных')}: {messages.filter(m => !m.isRead).length}
+                        {t('feedback.unread', 'Непрочитанных')}: {source.filter(m => !m.isRead).length}
                     </span>
-                    <button onClick={addTestMessage} className={styles.testBtn}>
+                    {/* <button onClick={addTestMessage} className={styles.testBtn}>
                         Добавить тестовое сообщение
-                    </button>
+                    </button> */}
+                    {loading && <span className={styles.loading}>Загрузка...</span>}
+                    {error && <span className={styles.error}>{String(error)}</span>}
+                    {useRemote && !loading && !error && <span className={styles.badge}>API</span>}
                 </div>
             </div>
 
@@ -102,31 +148,31 @@ export default function Feedback() {
                     className={`${styles.filterBtn} ${filterStatus === 'all' ? styles.active : ''}`}
                     onClick={() => setFilterStatus('all')}
                 >
-                    {t('feedback.filter.all', 'Все')} ({messages.length})
+                    {t('feedback.filter.all', 'Все')} ({source.length})
                 </button>
                 <button 
                     className={`${styles.filterBtn} ${filterStatus === 'unread' ? styles.active : ''}`}
                     onClick={() => setFilterStatus('unread')}
                 >
-                    {t('feedback.filter.unread', 'Непрочитанные')} ({messages.filter(m => !m.isRead).length})
+                    {t('feedback.filter.unread', 'Непрочитанные')} ({source.filter(m => !m.isRead).length})
                 </button>
                 <button 
                     className={`${styles.filterBtn} ${filterStatus === 'new' ? styles.active : ''}`}
                     onClick={() => setFilterStatus('new')}
                 >
-                    {t('feedback.filter.new', 'Новые')} ({messages.filter(m => m.status === 'new').length})
+                    {t('feedback.filter.new', 'Новые')} ({source.filter(m => m.status === 'new').length})
                 </button>
                 <button 
                     className={`${styles.filterBtn} ${filterStatus === 'in-progress' ? styles.active : ''}`}
                     onClick={() => setFilterStatus('in-progress')}
                 >
-                    {t('feedback.filter.inProgress', 'В работе')} ({messages.filter(m => m.status === 'in-progress').length})
+                    {t('feedback.filter.inProgress', 'В работе')} ({source.filter(m => m.status === 'in-progress').length})
                 </button>
                 <button 
                     className={`${styles.filterBtn} ${filterStatus === 'resolved' ? styles.active : ''}`}
                     onClick={() => setFilterStatus('resolved')}
                 >
-                    {t('feedback.filter.resolved', 'Решено')} ({messages.filter(m => m.status === 'resolved').length})
+                    {t('feedback.filter.resolved', 'Решено')} ({source.filter(m => m.status === 'resolved').length})
                 </button>
             </div>
 
