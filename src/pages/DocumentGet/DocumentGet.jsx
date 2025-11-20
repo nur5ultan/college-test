@@ -29,25 +29,6 @@ export default function DocumentGet(){
         return filename.split('.').pop().toLowerCase();
     };
 
-    const getFileIcon = (filename) => {
-        const extension = getFileExtension(filename);
-        switch (extension) {
-            case 'pdf':
-                return '📄';
-            case 'doc':
-            case 'docx':
-                return '📝';
-            case 'xls':
-            case 'xlsx':
-                return '📊';
-            case 'ppt':
-            case 'pptx':
-                return '📋';
-            default:
-                return '📎';
-        }
-    };
-
     const downloadFile = async (fileUrl, filename) => {
         try {
             const response = await fetch(fileUrl);
@@ -110,7 +91,7 @@ export default function DocumentGet(){
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className={styles.searchInput}
                         />
-                        <span className={styles.searchIcon}>🔍</span>
+                        <span className={styles.searchIcon}></span>
                     </div>
                     <div className={styles.stats}>
                         {t('document.get.found', 'Найдено')}: {filteredDocs.length} {t('document.get.documents', 'документов')}
@@ -131,54 +112,51 @@ export default function DocumentGet(){
                     {filteredDocs.map(d => (
                         <div key={d.id} className={styles.documentItem}>
                             <div className={styles.documentHeader}>
-                                <div className={styles.fileIcon}>
-                                    {getFileIcon(d.file)}
-                                </div>
                                 <div className={styles.documentInfo}>
                                     <h3 className={styles.title}>{d.title}</h3>
-                                    {d.file && (
+                                    {d.document && (
                                         <span className={styles.fileType}>
-                                            {getFileExtension(d.file).toUpperCase()} файл
+                                            {getFileExtension(d.document).toUpperCase()} файл
                                         </span>
                                     )}
                                     {d.description && (
                                         <p className={styles.desc}>{d.description}</p>
                                     )}
                                     {/* Отладочная информация */}
-                                    <div style={{fontSize: '12px', color: '#999', marginTop: '4px'}}>
-                                        Debug: file = {d.file ? d.file : 'НЕТ ФАЙЛА'}
-                                    </div>
+                                    {/* <div style={{fontSize: '12px', color: '#999', marginTop: '4px'}}>
+                                        Debug: file = {d.document ? d.document : 'НЕТ ФАЙЛА'}
+                                    </div> */}
                                 </div>
                             </div>
                             
                             {/* Показываем кнопки всегда для отладки */}
                             <div className={styles.actions}>
                                 {/* Показываем кнопку просмотра для PDF или всегда для отладки */}
-                                {(d.file && getFileExtension(d.file) === 'pdf') || true ? (
+                                {(d.document && getFileExtension(d.document) === 'pdf') || true ? (
                                     <a 
                                         className={styles.viewBtn} 
-                                        href={d.file ? buildFileUrl(d.file) : '#'} 
+                                        href={d.document ? buildFileUrl(d.document) : '#'} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        onClick={!d.file ? (e) => e.preventDefault() : undefined}
+                                        onClick={!d.document ? (e) => e.preventDefault() : undefined}
                                     >
-                                        👁️ {t('document.get.view','Просмотр')}
-                                        {!d.file && ' (нет файла)'}
+                                         {t('document.get.view','Просмотр')}
+                                        {!d.document && ' (нет файла)'}
                                     </a>
                                 ) : null}
                                 {/* Кнопка скачивания всегда показываем для отладки */}
                                 <button 
                                     className={styles.downloadBtn}
                                     onClick={() => {
-                                        if (d.file) {
-                                            downloadFile(buildFileUrl(d.file), d.title)
+                                        if (d.document) {
+                                            downloadFile(buildFileUrl(d.document), d.title)
                                         } else {
                                             alert('У документа нет файла для скачивания')
                                         }
                                     }}
                                 >
-                                    ⬇️ {t('document.get.download','Скачать')}
-                                    {!d.file && ' (нет файла)'}
+                                     {t('document.get.download','Скачать')}
+                                    {!d.document && ' (нет файла)'}
                                 </button>
                             </div>
                         </div>

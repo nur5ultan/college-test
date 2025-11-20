@@ -16,6 +16,78 @@
     color: #fff;
 }
 
+/* Вкладки языков */
+.languageTabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    background: #f5f5f5;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 20px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background: #f8f8f8;
+    border-color: #5b3b7a;
+}
+
+.tabActive {
+    flex: 1;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #5b3b7a 0%, #7b5b9a 100%);
+    color: #fff;
+    border: 2px solid #5b3b7a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(91, 59, 122, 0.3);
+}
+
+.fileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.removeFile {
+    background: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.removeFile:hover {
+    background: #d32f2f;
+}
+
 .form {
     display: flex;
     flex-direction: column;

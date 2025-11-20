@@ -5,7 +5,7 @@ import styles from './NewsList.module.css';
 import { Link } from 'react-router-dom';
 
 export default function NewsList({ limit = 3 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -21,6 +21,21 @@ export default function NewsList({ limit = 3 }) {
     if (/^https?:\/\//i.test(image)) return image;
     if (image.startsWith('/')) return `${API_ORIGIN}${image}`;
     return `${API_ORIGIN}/storage/${image}`;
+  };
+
+  // Функция для получения перевода из JSON или fallback на оригинальное поле
+  const getTranslation = (item, field) => {
+    try {
+      const translations = typeof item.text === 'string' ? JSON.parse(item.text) : null;
+      const currentLang = i18n.language; // 'ru', 'kz', 'en'
+      
+      if (translations && translations[currentLang]) {
+        return translations[currentLang][field] || item[field] || '';
+      }
+    } catch (error) {
+      console.error('Ошибка парсинга переводов:', error);
+    }
+    return item[field] || '';
   };
 
   useEffect(() => {
@@ -57,27 +72,32 @@ export default function NewsList({ limit = 3 }) {
 
   return (
     <div className={styles.list}>
-      {items.map((it) => (
-        <article key={it.slug || it.id} className={styles.card}>
-          {it.image && (
-            <div
-              className={styles.thumb}
-              style={{ backgroundImage: `url(${buildImageUrl(it.image)})` }}
-              aria-label={it.title}
-            />
-          )}
-          <div className={styles.info}>
-            <h3 className={styles.title}>
-              {it.slug ? (
-                <Link to={`/news/${it.slug}`}>{it.title}</Link>
-              ) : (
-                it.title
-              )}
-            </h3>
-            {it.description && <p className={styles.desc}>{it.description}</p>}
-          </div>
-        </article>
-      ))}
+      {items.map((it) => {
+        const title = getTranslation(it, 'title');
+        const description = getTranslation(it, 'description');
+        
+        return (
+          <article key={it.slug || it.id} className={styles.card}>
+            {it.image && (
+              <div
+                className={styles.thumb}
+                style={{ backgroundImage: `url(${buildImageUrl(it.image)})` }}
+                aria-label={title}
+              />
+            )}
+            <div className={styles.info}>
+              <h3 className={styles.title}>
+                {it.slug ? (
+                  <Link to={`/news/${it.slug}`}>{title}</Link>
+                ) : (
+                  title
+                )}
+              </h3>
+              {description && <p className={styles.desc}>{description}</p>}
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }

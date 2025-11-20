@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Document.module.css";
 import api from "../../api/axios";
 
-
 export default function Document() {
   const [items, setItems] = useState([]); 
   const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
   const [document, setDocument] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -36,7 +34,6 @@ export default function Document() {
     return token ? { Authorization: `Bearer ${token}` } : {};
   };
 
-  // Загрузка документов
   const fetchDocuments = async () => {
     setLoading(true); setError(null);
     try {
@@ -61,12 +58,10 @@ export default function Document() {
 
   useEffect(() => { 
     fetchDocuments(); 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function resetForm() {
     setTitle('');
-    // setDescription('');
     setDocument(null);
     setEditingId(null);
     setMessage(null);
@@ -75,68 +70,59 @@ export default function Document() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null); setMessage(null);
+  e.preventDefault();
+  setError(null); setMessage(null);
 
-    if (document) {
-      const allowed = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-      ];
-      if (!allowed.includes(document.type)) {
-        setError('Можно загрузить только PDF или Word документ (.doc, .docx, .pdf)');
-        return;
-      }
+  if (document) {
+    const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (!allowed.includes(document.type)) {
+      setError('Можно загрузить только PDF или Word');
+      return;
+    }
+  }
+
+  const formData = new FormData();
+  formData.append('title', title);
+  if (document) formData.append('document', document);
+
+  setSaving(true);
+  try {
+    let url = '/documents';
+    if (editingId) {
+      url = `/documents/${editingId}?_method=PUT`; 
     }
 
-    const formData = new FormData();
-    formData.append('title', title);
-    // formData.append('description', description);
-    if (document) formData.append('document', document);
+    await api.post(url, formData, {
+      headers: authHeaders() 
+    });
 
-    setSaving(true);
-    try {
-      if (editingId) {
-        await api.post(`/documents/${editingId}?_method=PUT`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data', ...authHeaders() }
-        });
-        setMessage('Документ обновлён');
-      } else {
-        await api.post('/documents', formData, {
-          headers: { 'Content-Type': 'multipart/form-data', ...authHeaders() }
-        });
-        setMessage('Документ добавлен');
-      }
-      resetForm();
-      fetchDocuments();
-    } catch (e) {
-      console.error('Ошибка сохранения документа:', e);
-      setError('Ошибка при сохранении документа');
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  // Редактирование: подставляем значения
+    setMessage(editingId ? 'Документ обновлён' : 'Документ добавлен');
+    resetForm();
+    fetchDocuments();
+  } catch (e) {
+    console.error('Ошибка:', e.response || e);
+    setError(e.response?.data?.message || 'Ошибка сохранения');
+  } finally {
+    setSaving(false);
+  }
+};
   const handleEdit = (doc) => {
     setEditingId(doc.id);
     setTitle(doc.title || '');
-    // setDescription(doc.description || '');
-    setDocument(null); // файл не проставляем (оставляем прежний на сервере пока пользователь не загрузит новый)
+    setDocument(null);
     if (inputRef.current) inputRef.current.value = null;
     setMessage(null); setError(null);
   };
 
-  // Удаление
-  const handleDelete = async (doc) => {  // ← принимай весь объект
+  
+  const handleDelete = async (doc) => {  
   if (!window.confirm('Удалить документ?')) return;
 
   const formData = new FormData();
   formData.append('_method', 'DELETE');
 
   try {
-    await api.post(`/documents/${doc.slug}`, formData, {  // ← doc.slug!
+    await api.post(`/documents/${doc.slug}`, formData, {  
       headers: {
         ...authHeaders(),
       },
@@ -162,11 +148,6 @@ export default function Document() {
             Заголовок
             <input value={title} onChange={e => setTitle(e.target.value)} required />
           </label>
-
-            {/* <label>
-              Описание
-              <textarea value={description} onChange={e => setDescription(e.target.value)} required />
-            </label> */}
 
             <label>
               Файл документа (PDF / Word)

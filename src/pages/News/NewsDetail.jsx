@@ -12,7 +12,7 @@ export default function NewsDetail(){
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // Получаем origin бекенда для картинок (из baseURL без "/api")
 
@@ -26,6 +26,22 @@ export default function NewsDetail(){
     if (/^https?:\/\//i.test(image)) return image;
     if (image.startsWith('/')) return `${API_ORIGIN}${image}`;
     return `${API_ORIGIN}/storage/${image}`;
+  };
+
+  // Функция для получения перевода из JSON
+  const getTranslation = (field) => {
+    if (!item) return '';
+    try {
+      const translations = typeof item.text === 'string' ? JSON.parse(item.text) : null;
+      const currentLang = i18n.language; // 'ru', 'kz', 'en'
+      
+      if (translations && translations[currentLang]) {
+        return translations[currentLang][field] || item[field] || '';
+      }
+    } catch (error) {
+      console.error('Ошибка парсинга переводов:', error);
+    }
+    return item[field] || '';
   };
 
   useEffect(() => {
@@ -74,10 +90,10 @@ export default function NewsDetail(){
           <div className={styles.header}>
             <div className={styles.headerInner}>
               <h1 className={styles.title}>
-                {t("students.title", "Преподаватели")}
+                {t("students.title", "Новости")}
               </h1>
               <p className={styles.subtitle}>
-                {t("students.subtitle", "Информация про преподавателей")}
+                {t("students.subtitle", "Информация про новости")}
               </p>
             </div>
           </div>
@@ -85,16 +101,16 @@ export default function NewsDetail(){
       <div className={styles.topbar}>
         <Link to="/" className={styles.back}>&larr; На главную</Link>
       </div>
-      <h1 className={styles.title}>{item.title}</h1>
+      <h1 className={styles.title}>{getTranslation('title')}</h1>
       {item.image && (
         <div
           className={styles.hero}
           style={{ backgroundImage: `url(${buildImageUrl(item.image)})` }}
-          aria-label={item.title}
+          aria-label={getTranslation('title')}
         />
       )}
-      {item.description && <p className={styles.desc}>{item.description}</p>}
-      {item.text && <div className={styles.text}>{item.text}</div>}
+      {getTranslation('description') && <p className={styles.desc}>{getTranslation('description')}</p>}
+      {getTranslation('text') && <div className={styles.text}>{getTranslation('text')}</div>}
     </article>
     <Footer />
     </div>

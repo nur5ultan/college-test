@@ -22,6 +22,7 @@
 .form{
   display: grid;
   gap: 14px;
+  margin-top: 25px;
 }
 
 label{
