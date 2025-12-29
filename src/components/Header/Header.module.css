@@ -117,6 +117,7 @@ header {
     gap: 16px;
     transform: translateX(100%);
     animation: panelSlide 360ms cubic-bezier(.2, .9, .2, 1) forwards;
+    overflow: hidden;
 }
 
 .sidebarClose {
@@ -136,6 +137,27 @@ header {
     flex-direction: column;
     gap: 12px;
     margin-top: 8px;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 8px;
+}
+
+.sidebarNav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebarNav::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.sidebarNav::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.sidebarNav::-webkit-scrollbar-thumb:hover {
+    background: #999;
 }
 
 .sidebarLink {

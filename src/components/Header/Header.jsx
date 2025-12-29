@@ -85,11 +85,15 @@ export default function Header() {
                                 { to: '/about', label: t('menu.about','О нас') },
                                 { to: '/projects', label: t('menu.project','Наши проекты') },
                                 { to: '/specialties', label: t('menu.spec','Специальности') },
+                                { to: '/careerguidancework', label: t('menu.careerguidancework','Проф ориентированная работа') },
                                 // { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
                                 { to: '/students', label: t('menu.students','Студентам') },
                                 { to: '/contacts', label: t('menu.contacts','Контакты') },
                                 { to: '/applicants', label: t('menu.rules','Правила приема') },
                                 { to: '/director', label: t('menu.director','Директор колледжа') },
+                                { to: '/worldskills', label: t('menu.worldskills','WorldSkills') },
+                                { to: '/dualtraining', label: t('menu.dualtraining','Дуальное обучение') },
+                                { to: '/demo', label: t('menu.demo','Демо экзамен') },
                             ]} />
                         )}
         </header>

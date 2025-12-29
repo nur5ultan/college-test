@@ -27,6 +27,10 @@ import SpecialtyDetail from './pages/SpecialtyDetail/SpecialtyDetail';
 import Teachers from './pages/Teachers/Teachers';
 import Projects from './pages/Projects/Projects';
 import DocumentGet from './pages/DocumentGet/DocumentGet';
+import WorldSkills from './pages/WorldSkills/WorldSkills';
+import DualTraining from './pages/DualTraining/DualTraining';
+import Demo from './pages/Demo/Demo';
+import CareerGuidanceWork from './pages/CareerGuidanceWork/CareerGuidanceWork';
 
 const PrivateRoute = ({ children }) => {
   const logged = typeof window !== 'undefined' && (
@@ -62,6 +66,10 @@ export default function App() {
           <Route path="/specialties/:id" element={<SpecialtyDetail />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/document" element={<DocumentGet />} />
+          <Route path="/worldskills" element={<WorldSkills />} />
+          <Route path="/dualtraining" element={<DualTraining />} />
+          <Route path="/demo" element={<Demo />} />
+          <Route path="/careerguidancework" element={<CareerGuidanceWork />} />
           <Route path="/news" element={<NewsIndex />} />
           <Route path="/news/:slug" element={<NewsDetail />} />
           <Route path="/login" element={<Login />} />
