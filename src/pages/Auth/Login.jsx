@@ -15,7 +15,7 @@ export default function Login() {
 
   // Пробуем несколько возможных путей авторизации (Laravel может иметь разный route)
   async function tryEndpoints(payload) {
-    const endpoints = ['/auth/login', '/login'];
+    const endpoints = ['/login', '/login'];
     for (const ep of endpoints) {
       try {
         const res = await api.post(ep, payload);

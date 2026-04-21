@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Главная страница -->
+  <url>
+    <loc>https://mkt.edu.kz/</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- О нас -->
+  <url>
+    <loc>https://mkt.edu.kz/about</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Директор колледжа -->
+  <url>
+    <loc>https://mkt.edu.kz/director</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Специальности -->
+  <url>
+    <loc>https://mkt.edu.kz/specialties</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Абитуриентам -->
+  <url>
+    <loc>https://mkt.edu.kz/applicants</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Студентам -->
+  <url>
+    <loc>https://mkt.edu.kz/students</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Преподавателям -->
+  <url>
+    <loc>https://mkt.edu.kz/teachers</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Наши проекты -->
+  <url>
+    <loc>https://mkt.edu.kz/projects</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Контакты -->
+  <url>
+    <loc>https://mkt.edu.kz/contacts</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Документы -->
+  <url>
+    <loc>https://mkt.edu.kz/document</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- WorldSkills -->
+  <url>
+    <loc>https://mkt.edu.kz/worldskills</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Дуальное обучение -->
+  <url>
+    <loc>https://mkt.edu.kz/dualtraining</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Демо экзамен -->
+  <url>
+    <loc>https://mkt.edu.kz/demo</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Профориентационная работа -->
+  <url>
+    <loc>https://mkt.edu.kz/careerguidancework</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Новости -->
+  <url>
+    <loc>https://mkt.edu.kz/news</loc>
+    <lastmod>2024-12-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
+

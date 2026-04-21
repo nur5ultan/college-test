@@ -41,7 +41,7 @@ export default function Home(){
 
           <div className={styles.heroContent}>
             <h1 className={styles.h1}>{t('home.title','Официальный сайт')}</h1> <br></br>
-            <h2 className={styles.h2}>{t('home.name','Мангыстауский колледж туризма')}</h2>
+            <h2 className={styles.h2}>{t('home.name','Мангистауский колледж туризма')}</h2>
             <a
               className={styles.videoButton}
               href="https://youtu.be/AnGRgWeVNJY?si=bx9p6gKstULYRNKi"
