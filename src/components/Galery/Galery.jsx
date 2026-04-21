@@ -34,8 +34,6 @@ export default function Galery() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // создаем превью изображения (base64)
-    let imageUrl = null;
     if (imageFile) {
       const reader = new FileReader();
       reader.onloadend = () => {

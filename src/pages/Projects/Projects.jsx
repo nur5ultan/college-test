@@ -27,9 +27,9 @@ export default function Teachers() {
          <h2 className={styles.contentTitle}>
            {t("projects.content.title", "Список проектов")}
          </h2>
-            <iframe src="https://drive.google.com/file/d/1n6KI2nb1WJ4-s_AzEyfT61aeb-DNvCJZ/preview" frameborder="0" width="900" height="600"></iframe> <br /><br /> <br /><br />
-            <iframe src="https://drive.google.com/file/d/1zi0WmKZwI8sm6AnZ_XHbYIayvHHf7qc0/preview" frameborder="0" width="900" height="600"></iframe><br /><br /><br /><br />
-            <iframe src="https://drive.google.com/file/d/1bNP7ZMf-5KvScbkeTCw0Ru9M4G6vsJ01/preview" frameborder="0" width="900" height="600"></iframe>
+            <iframe src="https://drive.google.com/file/d/1n6KI2nb1WJ4-s_AzEyfT61aeb-DNvCJZ/preview" title={t('projects.doc1', 'Проект 1')} frameBorder="0" width="900" height="600"></iframe> <br /><br /> <br /><br />
+            <iframe src="https://drive.google.com/file/d/1zi0WmKZwI8sm6AnZ_XHbYIayvHHf7qc0/preview" title={t('projects.doc2', 'Проект 2')} frameBorder="0" width="900" height="600"></iframe><br /><br /><br /><br />
+            <iframe src="https://drive.google.com/file/d/1bNP7ZMf-5KvScbkeTCw0Ru9M4G6vsJ01/preview" title={t('projects.doc3', 'Проект 3')} frameBorder="0" width="900" height="600"></iframe>
          {/* <ul className={styles.projectList}>
            <li className={styles.projectItem}>
              {t("projects.content.item1", "Проект 1")}

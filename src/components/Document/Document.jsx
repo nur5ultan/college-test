@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Document.module.css";
 import api from "../../api/axios";
@@ -29,36 +29,25 @@ export default function Document() {
 
   const authHeaders = () => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
-    console.log('Токен авторизации:', token ? 'ЕСТЬ' : 'НЕТ');
-    console.log('Полный токен:', token);
     return token ? { Authorization: `Bearer ${token}` } : {};
   };
 
-  const fetchDocuments = async () => {
+  const fetchDocuments = useCallback(async () => {
     setLoading(true); setError(null);
     try {
-      console.log('Загрузка документов...');
-      console.log('Базовый URL API:', api.defaults.baseURL);
       const res = await api.get('/documents', { headers: authHeaders() });
-      console.log('Ответ сервера:', res);
-      console.log('Данные документов:', res.data);
-      
       const documents = Array.isArray(res.data) ? res.data : [];
-      console.log('Обработанные документы:', documents);
       setItems(documents);
     } catch (e) {
-      console.error('Ошибка загрузки документов:', e);
-      console.error('Статус ошибки:', e.response?.status);
-      console.error('Данные ошибки:', e.response?.data);
       setError('Не удалось загрузить документы');
     } finally {
       setLoading(false);
     }
-  };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => { 
-    fetchDocuments(); 
-  }, []);
+  useEffect(() => {
+    fetchDocuments();
+  }, [fetchDocuments]);
 
   function resetForm() {
     setTitle('');
@@ -100,7 +89,6 @@ export default function Document() {
     resetForm();
     fetchDocuments();
   } catch (e) {
-    console.error('Ошибка:', e.response || e);
     setError(e.response?.data?.message || 'Ошибка сохранения');
   } finally {
     setSaving(false);
@@ -131,7 +119,6 @@ export default function Document() {
     setItems(prev => prev.filter(d => d.id !== doc.id));
     setMessage('Документ удалён');
   } catch (e) {
-    console.error('Ошибка:', e.response || e);
     setError(e.response?.data?.message || 'Не удалось удалить');
   }
 };

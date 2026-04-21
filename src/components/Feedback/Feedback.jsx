@@ -6,15 +6,13 @@ import styles from './Feedback.module.css';
 
 export default function Feedback() {
     const { t } = useTranslation();
-    const { messages, addMessage, markAsRead, updateMessageStatus, deleteMessage } = useFeedback();
+    const { messages, markAsRead, updateMessageStatus, deleteMessage } = useFeedback();
     const [selectedMessage, setSelectedMessage] = useState(null);
     const [filterStatus, setFilterStatus] = useState('all');
     const [remoteMessages, setRemoteMessages] = useState([]);
     const [useRemote, setUseRemote] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
-    console.log('Feedback component: Сообщения в компоненте', messages);
 
     // Загружаем сообщения с бэкенда (GET /feedbacks) — если доступно, показываем их, иначе fallback на локальный контекст
     useEffect(() => {
@@ -52,10 +50,6 @@ export default function Feedback() {
         return () => { mounted = false; };
     }, []);
 
-    // Отслеживаем изменения сообщений локального контекста (для отладки)
-    useEffect(() => {
-        console.log('Feedback component: useEffect - изменения сообщений', messages);
-    }, [messages]);
 
     const handleMessageClick = (message) => {
         if (!message.isRead) {

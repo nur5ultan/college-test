@@ -76,7 +76,17 @@
     "announcements": "Announcements & Events",
     "news": "News",
     "news_sub": "Mangistau College of Tourism",
-    "view_all_news": "View all news"
+    "view_all_news": "View all news",
+    "stats": {
+      "students": "students",
+      "buildings": "buildings",
+      "teachers": "teachers",
+      "dorms": "dormitories"
+    }
+  },
+  "news": {
+    "page_title": "News",
+    "page_subtitle": "Latest news and events from the college"
   }
   ,
   "loading": "Loading...",

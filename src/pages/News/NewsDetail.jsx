@@ -90,10 +90,10 @@ export default function NewsDetail(){
           <div className={styles.header}>
             <div className={styles.headerInner}>
               <h1 className={styles.title}>
-                {t("students.title", "Новости")}
+                {t("news.page_title", "Новости")}
               </h1>
               <p className={styles.subtitle}>
-                {t("students.subtitle", "Информация про новости")}
+                {t("news.page_subtitle", "Информация про новости")}
               </p>
             </div>
           </div>
