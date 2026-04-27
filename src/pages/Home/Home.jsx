@@ -17,16 +17,8 @@ export default function Home(){
     useEffect(() => {
         const id = setInterval(() => {
             setIndex(i => (i + 1) % videos.length);
-        }, 8000);
+        }, 8000); 
         return () => clearInterval(id);
-    }, []);
-
-    useEffect(() => {
-        if (document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) return;
-        const script = document.createElement('script');
-        script.src = 'https://elfsightcdn.com/platform.js';
-        script.async = true;
-        document.head.appendChild(script);
     }, []);
 
     return (
@@ -70,26 +62,26 @@ export default function Home(){
             {
               id: "students",
               icon: "/images/student-icon.png",
-              value: "3475",
-              label: t('home.stats.students', 'студентов'),
+              value: "1088",
+              label: t('stats.students'),
             },
             {
               id: "buildings",
               icon: "/images/building-icon.png",
-              value: "4",
-              label: t('home.stats.buildings', 'учебных корпусов'),
+              value: "1",
+              label: t('stats.buildings'),
             },
             {
               id: "teachers",
               icon: "/images/teacher-icon.png",
-              value: "221",
-              label: t('home.stats.teachers', 'преподавателей'),
+              value: "77",
+              label: t('stats.teachers'),
             },
             {
               id: "dorms",
               icon: "/images/dorm-icon.png",
-              value: "2",
-              label: t('home.stats.dorms', 'общежития'),
+              value: "1",
+              label: t('stats.dorms'),
             },
           ]}
         />
@@ -107,7 +99,8 @@ export default function Home(){
         </section>
 
 {/* instagram Виджет */}
-        <div className="elfsight-app-f4c5b7c6-0bba-443b-afea-a2a2f0b42c1c" data-elfsight-app-lazy="true"></div>
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-f4c5b7c6-0bba-443b-afea-a2a2f0b42c1c" data-elfsight-app-lazy></div>
 
         <div className={styles.map}>
             <div className={styles.mapContainer}>

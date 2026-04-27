@@ -21,8 +21,7 @@
     "post_reports_excerpt": "Short description of past events and achievements.",
     "read": "read →"
   },
-
- "directorblog": {
+  "directorblog": {
     "name": "Sarmurzina Zhaniya Onalbayeva",
     "position": "Director",
     "title": "Director of the College",
@@ -32,13 +31,10 @@
     "email": "Email: j_sarmurzina@mail.ru",
     "read_more": "Read the blog"
   },
-
-
   "search": {
     "placeholder": "Search the site...",
     "find": "Find"
   },
-
   "accessibility": {
     "title": "Accessibility Version",
     "toggle": "Accessibility Settings",
@@ -56,7 +52,6 @@
     "empty": "No news yet",
     "error": "Failed to load news"
   },
-
   "feedback": {
     "email": "Your Email",
     "message": "Message",
@@ -67,8 +62,7 @@
     "invalid_email": "Please enter a valid email",
     "enter_message": "Please enter a message",
     "sending": "Sending..."
-  }
-  ,
+  },
   "home": {
     "title": "Official website",
     "name": "Mangistau College of Tourism",
@@ -76,23 +70,23 @@
     "announcements": "Announcements & Events",
     "news": "News",
     "news_sub": "Mangistau College of Tourism",
-    "view_all_news": "View all news",
-    "stats": {
-      "students": "students",
-      "buildings": "buildings",
-      "teachers": "teachers",
-      "dorms": "dormitories"
-    }
+    "view_all_news": "View all news"
   },
-  "news": {
-    "page_title": "News",
-    "page_subtitle": "Latest news and events from the college"
-  }
-  ,
   "loading": "Loading...",
-  "announcement": { "more": "more →" },
-  "announcements": { "error": "Failed to load announcements" },
-  "menu": { "about": "About", "spec": "Specialties", "applicants": "For applicants", "students": "For students", "teachers": "For teachers", "contacts": "Contacts" },
+  "announcement": {
+    "more": "more →"
+  },
+  "announcements": {
+    "error": "Failed to load announcements"
+  },
+  "menu": {
+    "about": "About",
+    "spec": "Specialties",
+    "applicants": "For applicants",
+    "students": "For students",
+    "teachers": "For teachers",
+    "contacts": "Contacts"
+  },
   "footer": {
     "useful": "Useful links",
     "departments": "Departments",
@@ -102,8 +96,7 @@
     "cost": "Tuition fees",
     "faq": "FAQ",
     "college_name": "Mangistau College of Tourism"
-  }
-  ,
+  },
   "specialties": {
     "section_label": "Specialties",
     "title": "Specialties",
@@ -112,11 +105,26 @@
     "prev": "Previous",
     "next": "Next",
     "items": {
-      "s1": { "title": "Hotel business", "desc": "10130100-Hotel business \nквалификация 4S10130104-Супервайзер\n" },
-      "s2": { "title": "Food organization", "desc": "10130300-Food organization \nквалификации 3W10130302-Повар, 3W10130301-Кондитер-оформитель, 4S10130303-Технолог" },
-      "s3": { "title": "Tourism", "desc": "10150100-Tourism \nквалификация 4S10150104-Менеджер по туризму" },
-      "s4": { "title": "Translation", "desc": "02310100-Translation (по видам)\nквалификация 4S02310101-Переводчик\n" },
-      "s5": { "title": "Marketing", "desc": "04140100-Marketing (по отраслям)\nквалификация 4S04140103-Маркетолог\n" }
+      "s1": {
+        "title": "Hotel business",
+        "desc": "10130100-Hotel business \nквалификация 4S10130104-Супервайзер\n"
+      },
+      "s2": {
+        "title": "Food organization",
+        "desc": "10130300-Food organization \nквалификации 3W10130302-Повар, 3W10130301-Кондитер-оформитель, 4S10130303-Технолог"
+      },
+      "s3": {
+        "title": "Tourism",
+        "desc": "10150100-Tourism \nквалификация 4S10150104-Менеджер по туризму"
+      },
+      "s4": {
+        "title": "Translation",
+        "desc": "02310100-Translation (по видам)\nквалификация 4S02310101-Переводчик\n"
+      },
+      "s5": {
+        "title": "Marketing",
+        "desc": "04140100-Marketing (по отраслям)\nквалификация 4S04140103-Маркетолог\n"
+      }
     },
     "detail": {
       "subtitle": "Learn more about the specialties",
@@ -214,7 +222,6 @@
       }
     }
   },
-
   "document": {
     "get": {
       "title": "Document List",
@@ -230,9 +237,14 @@
       "error": "Failed to load documents"
     }
   },
-
   "nav": {
     "home": "Home",
     "specialties": "Specialties"
+  },
+  "stats": {
+    "students": "students",
+    "buildings": "academic building",
+    "teachers": "teachers",
+    "dorms": "dormitory"
   }
 }
