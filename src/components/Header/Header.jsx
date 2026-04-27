@@ -9,21 +9,11 @@ export default function Header() {
     const [open, setOpen] = useState(false);
     const [q, setQ] = useState('');
     const [sidebar, setSidebar] = useState(false);
-    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('dark_mode') === 'true');
     const inputRef = useRef(null);
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
 
     useEffect(()=>{ if(open && inputRef.current) inputRef.current.focus() },[open]);
-
-    useEffect(() => {
-        if (darkMode) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
-        localStorage.setItem('dark_mode', String(darkMode));
-    }, [darkMode]);
 
     function submitSearch(e){
         e && e.preventDefault();
@@ -56,7 +46,7 @@ export default function Header() {
                             <ScreenReader />
                         </div>
                         <a href="https://www.facebook.com/mkt.aktau/" target="_blank" rel="noopener noreferrer"><img src="/images/facebook.png" className={styles.socialImg} alt="facebook"/></a>
-                        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="/images/youtube.png" className={styles.socialImg} alt="youtube"/></a>
+                        <a href="https://www.youtube.com/@MangistauCollegeTourism" target="_blank" rel="noopener noreferrer"><img src="/images/youtube.png" className={styles.socialImg} alt="youtube"/></a>
                         <a href="https://www.instagram.com/mangistau_college_tourism/" target="_blank" rel="noopener noreferrer"><img src="/images/insta.png" className={styles.socialImg} alt="instagram"/></a>
                     </div>
                 </div>
@@ -72,15 +62,6 @@ export default function Header() {
             </div>
 
             <div className={styles.headerRight}>
-                <button
-                    type="button"
-                    className={styles.button}
-                    aria-label={t('darkmode.toggle', 'Тёмный режим')}
-                    title={t('darkmode.toggle', 'Тёмный режим')}
-                    onClick={() => setDarkMode(d => !d)}
-                >
-                    <span style={{fontSize:'18px'}}>{darkMode ? '☀' : '☾'}</span>
-                </button>
                 <button className={styles.button} aria-label={t('search.open','Поиск')} onClick={()=>setOpen(s=>!s)}>
                     <img src="/images/search.png" className={styles.instrumentImg} alt={t('search.icon_alt','Поиск')} />
                 </button>

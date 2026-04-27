@@ -113,15 +113,15 @@ export default function Home(){
                 Актау
                 </a>
                 <a
-                href="https://yandex.kz/maps/ru/29575/aktau/?ll=51.169963%2C43.648722&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
+                href="https://yandex.kz/maps/ru/29575/aktau/?ll=51.169479%2C43.648923&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
                 className={styles.mapLinkBottom}
                 target="_blank"
                 rel="noopener noreferrer"
                 >
-                43.648923, 51.169479 — Яндекс Карты
+                г. Актау, 23-й микрорайон, здание 8 — Яндекс Карты
                 </a>
                 <iframe
-                src="https://yandex.kz/map-widget/v1/?ll=51.169963%2C43.648722&mode=whatshere&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
+                src="https://yandex.kz/map-widget/v1/?ll=51.169479%2C43.648923&mode=whatshere&whatshere%5Bpoint%5D=51.169479%2C43.648923&whatshere%5Bzoom%5D=17&z=18.43"
                 frameBorder="1"
                 allowFullScreen
                 title="Yandex Map Aktau"
