@@ -9,13 +9,23 @@ export default function Header() {
     const [open, setOpen] = useState(false);
     const [q, setQ] = useState('');
     const [sidebar, setSidebar] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('dark_mode') === 'true');
     const inputRef = useRef(null);
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
 
     useEffect(()=>{ if(open && inputRef.current) inputRef.current.focus() },[open]);
 
-        function submitSearch(e){
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        localStorage.setItem('dark_mode', String(darkMode));
+    }, [darkMode]);
+
+    function submitSearch(e){
         e && e.preventDefault();
         if(!q || q.trim() === '') return setOpen(false);
         navigate(`/search?q=${encodeURIComponent(q.trim())}`);
@@ -23,9 +33,9 @@ export default function Header() {
         setQ('');
     }
 
-            function changeLang(l){
-                try{ i18n.changeLanguage(l); localStorage.setItem('app_lang', l); }catch(e){/*ignore*/}
-            }
+    function changeLang(l){
+        try{ i18n.changeLanguage(l); localStorage.setItem('app_lang', l); }catch(e){/*ignore*/}
+    }
 
     return (
         <header>
@@ -62,10 +72,19 @@ export default function Header() {
             </div>
 
             <div className={styles.headerRight}>
-                <button className={styles.button} aria-label={t('search.open')} onClick={()=>setOpen(s=>!s)}>
+                <button
+                    type="button"
+                    className={styles.button}
+                    aria-label={t('darkmode.toggle', 'Тёмный режим')}
+                    title={t('darkmode.toggle', 'Тёмный режим')}
+                    onClick={() => setDarkMode(d => !d)}
+                >
+                    <span style={{fontSize:'18px'}}>{darkMode ? '☀' : '☾'}</span>
+                </button>
+                <button className={styles.button} aria-label={t('search.open','Поиск')} onClick={()=>setOpen(s=>!s)}>
                     <img src="/images/search.png" className={styles.instrumentImg} alt={t('search.icon_alt','Поиск')} />
                 </button>
-                <button className={styles.button} aria-label={t('menu.open_sidebar')} onClick={()=>setSidebar(s=>!s)}>
+                <button className={styles.button} aria-label={t('menu.open_sidebar','Меню')} onClick={()=>setSidebar(s=>!s)}>
                     <img src="/images/burger.png" className={styles.instrumentImg} alt={t('menu.burger_alt','Меню')} />
                 </button>
             </div>
@@ -78,44 +97,42 @@ export default function Header() {
                   </form>
                 </div>
             )}
-                        {typeof window !== 'undefined' && (
-                            <Sidebar isOpen={sidebar} onClose={()=>setSidebar(false)} links={[
-                                { to: '/news', label: t('menu.news','Новости') },
-                                { to: '/document', label: t('menu.document','Перечень документов') },
-                                { to: '/about', label: t('menu.about','О нас') },
-                                { to: '/projects', label: t('menu.project','Наши проекты') },
-                                { to: '/specialties', label: t('menu.spec','Специальности') },
-                                { to: '/careerguidancework', label: t('menu.careerguidancework','Проф ориентированная работа') },
-                                // { to: '/applicants', label: t('menu.applicants','Абитуриентам') },
-                                { to: '/students', label: t('menu.students','Студентам') },
-                                { to: '/contacts', label: t('menu.contacts','Контакты') },
-                                { to: '/applicants', label: t('menu.rules','Правила приема') },
-                                { to: '/director', label: t('menu.director','Директор колледжа') },
-                                { to: '/worldskills', label: t('menu.worldskills','WorldSkills') },
-                                { to: '/dualtraining', label: t('menu.dualtraining','Дуальное обучение') },
-                                { to: '/demo', label: t('menu.demo','Демо экзамен') },
-                            ]} />
-                        )}
+            {typeof window !== 'undefined' && (
+                <Sidebar isOpen={sidebar} onClose={()=>setSidebar(false)} links={[
+                    { to: '/news', label: t('menu.news','Новости') },
+                    { to: '/document', label: t('menu.document','Перечень документов') },
+                    { to: '/about', label: t('menu.about','О нас') },
+                    { to: '/projects', label: t('menu.project','Наши проекты') },
+                    { to: '/specialties', label: t('menu.spec','Специальности') },
+                    { to: '/careerguidancework', label: t('menu.careerguidancework','Проф ориентированная работа') },
+                    { to: '/students', label: t('menu.students','Студентам') },
+                    { to: '/contacts', label: t('menu.contacts','Контакты') },
+                    { to: '/applicants', label: t('menu.rules','Правила приема') },
+                    { to: '/director', label: t('menu.director','Директор колледжа') },
+                    { to: '/worldskills', label: t('menu.worldskills','WorldSkills') },
+                    { to: '/dualtraining', label: t('menu.dualtraining','Дуальное обучение') },
+                    { to: '/demo', label: t('menu.demo','Демо экзамен') },
+                ]} />
+            )}
         </header>
     )
 }
 
 function Sidebar({ isOpen, onClose, links=[] }){
-        const { t } = useTranslation();
-        if(!isOpen) return null;
-        return (
-            <div className={styles.sidebarOverlay} onClick={onClose} onKeyDown={(e)=>{ if(e.key==='Escape') onClose(); }}>
-                <aside className={styles.sidebar} role="dialog" aria-label={t('menu.sidebar_label','Меню')} onClick={e=>e.stopPropagation()}>
-                    <button className={styles.sidebarClose} aria-label={t('menu.close','Закрыть')} onClick={onClose}>×</button>
-                    <nav className={styles.sidebarNav}>
-                        {links.map((l, idx)=> (
-                            <Link key={l.to} to={l.to} className={styles.sidebarLink} onClick={onClose} style={{ '--i': idx }}>
-                                {l.label}
-                            </Link>
-                        ))}
-                    </nav>
-                </aside>
-            </div>
-        );
+    const { t } = useTranslation();
+    if(!isOpen) return null;
+    return (
+        <div className={styles.sidebarOverlay} onClick={onClose} onKeyDown={(e)=>{ if(e.key==='Escape') onClose(); }}>
+            <aside className={styles.sidebar} role="dialog" aria-label={t('menu.sidebar_label','Меню')} onClick={e=>e.stopPropagation()}>
+                <button className={styles.sidebarClose} aria-label={t('menu.close','Закрыть')} onClick={onClose}>×</button>
+                <nav className={styles.sidebarNav}>
+                    {links.map((l, idx)=> (
+                        <Link key={l.to} to={l.to} className={styles.sidebarLink} onClick={onClose} style={{ '--i': idx }}>
+                            {l.label}
+                        </Link>
+                    ))}
+                </nav>
+            </aside>
+        </div>
+    );
 }
-

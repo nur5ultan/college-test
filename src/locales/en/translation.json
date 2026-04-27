@@ -33,7 +33,9 @@
   },
   "search": {
     "placeholder": "Search the site...",
-    "find": "Find"
+    "find": "Find",
+    "icon_alt": "Search",
+    "open": "Open search"
   },
   "accessibility": {
     "title": "Accessibility Version",
@@ -61,7 +63,8 @@
     "visitor": "Website visitor",
     "invalid_email": "Please enter a valid email",
     "enter_message": "Please enter a message",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "title": "Feedback"
   },
   "home": {
     "title": "Official website",
@@ -85,7 +88,21 @@
     "applicants": "For applicants",
     "students": "For students",
     "teachers": "For teachers",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "news": "News",
+    "document": "Documents",
+    "project": "Our projects",
+    "projects": "Our projects",
+    "rules": "Admission rules",
+    "careerguidancework": "Career guidance",
+    "worldskills": "WorldSkills",
+    "dualtraining": "Dual training",
+    "demo": "Demo exam",
+    "director": "Director",
+    "open_sidebar": "Open menu",
+    "burger_alt": "Menu",
+    "sidebar_label": "Menu",
+    "close": "Close"
   },
   "footer": {
     "useful": "Useful links",
@@ -95,7 +112,9 @@
     "rules": "Admission rules",
     "cost": "Tuition fees",
     "faq": "FAQ",
-    "college_name": "Mangistau College of Tourism"
+    "college_name": "Mangistau College of Tourism",
+    "logo_alt": "Logo",
+    "copyright": "© {{year}}"
   },
   "specialties": {
     "section_label": "Specialties",
@@ -246,5 +265,34 @@
     "buildings": "academic building",
     "teachers": "teachers",
     "dorms": "dormitory"
+  },
+  "lang": {
+    "label": "Language:"
+  },
+  "teachers": {
+    "title": "Teachers",
+    "subtitle": "College faculty",
+    "intro": "Our teachers are highly qualified specialists with extensive experience in their fields.",
+    "list_title": "Staff List of Mangistau College of Tourism"
+  },
+  "students": {
+    "title": "For students",
+    "subtitle": "Information for students",
+    "intro": "Students are provided with guidance assistance upon enrollment in the college.",
+    "leaders": "Group leaders",
+    "timetable_label": "Bell schedule",
+    "shift1": "Shift 1",
+    "shift2": "Shift 2",
+    "double_lesson": "Double lesson",
+    "lesson_order": "Lesson",
+    "time_col": "Time",
+    "break_col": "Break"
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "About the college"
+  },
+  "darkmode": {
+    "toggle": "Dark mode"
   }
 }

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   transition: font-size 0.3s ease, filter 0.3s ease;
 }
 
@@ -76,4 +76,83 @@ body.font-size-extra-large {
 
 body.font-size-extra-large {
   line-height: 1.8;
+}
+
+/* Тёмный режим */
+body.dark-mode {
+  background: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode footer {
+  background: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode aside {
+  background: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode table {
+  background: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #444 !important;
+}
+
+body.dark-mode a {
+  color: #90caf9 !important;
+}
+/* Тёмный режим */
+body.dark-mode {
+  background: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode footer {
+  background: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode aside {
+  background: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode table {
+  background: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #444 !important;
+}
+
+body.dark-mode a {
+  color: #90caf9 !important;
 }

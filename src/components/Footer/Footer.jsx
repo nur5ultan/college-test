@@ -20,15 +20,15 @@ export default function Footer(){
                     <Link to="/applicants">{t('footer.rules','Правила приема')}</Link>
                     <Link to="/specialties">{t('footer.cost','Стоимость обучения')}</Link>
                     <Link to="/director">{t('director.title','Блог директора')}</Link>
-                    <Link to="/contacts">{t('footer.faq','Вопрос-ответ')}</Link >
+                    <Link to="/contacts">{t('footer.faq','Вопрос-ответ')}</Link>
                 </div>
-                </div>
+            </div>
 
-                <footer>
-                    <img src="/images/logo.png" className={styles.footerLogo} alt={t('footer.logo_alt','Логотип')} />
-                    <p className={styles.footerP}>{t('footer.college_name','Мангыстауский колледж туризма')}</p>
-                    <p className={styles.footerRight}>{t('footer.copyright','© {{year}}', { year: new Date().getFullYear() })}</p>
-                </footer>
+            <footer>
+                <img src="/images/logo.png" className={styles.footerLogo} alt={t('footer.logo_alt','Логотип')} />
+                <p className={styles.footerP}>{t('footer.college_name','Мангистауский колледж туризма')}</p>
+                <p className={styles.footerRight}>{t('footer.copyright','© {{year}}', { year: new Date().getFullYear() })}</p>
+            </footer>
         </div>
     );
 }

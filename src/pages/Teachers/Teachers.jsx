@@ -159,7 +159,7 @@ export default function Teachers() {
 
         {/* Заголовок списка */}
         <h2 className={styles.listTitle}>
-          «Маңғыстау туризм колледжі» МКҚК қызметкерлерінің тізімі
+          {t('teachers.list_title', '«Маңғыстау туризм колледжі» МКҚК қызметкерлерінің тізімі')}
         </h2>
 
         <div className={styles.tableContainer}>
