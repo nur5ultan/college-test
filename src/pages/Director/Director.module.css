@@ -204,9 +204,7 @@
 /* Адаптив */
 @media (max-width: 900px) {
     .header { padding: 28px 16px }
-    .title { font-size: 28px 
-	text-transform: uppercase;
-}
+    .title { font-size: 28px; text-transform: uppercase; }
 }
 
 /* Tablet+ раскладка: профиль слева, контент справа */
