@@ -60,8 +60,8 @@
 	border-bottom-right-radius: 18px;
 	max-width: 1090px;
 	margin: 8px auto;
-	margin-top: -493px;
-	margin-left: 84px;
+	margin-top: -447px;
+	margin-left: 85px;
 }
 
 .headerInner{
@@ -121,9 +121,8 @@
 
   .title {
     font-size: 28px;
-  
-	text-transform: uppercase;
-}
+    text-transform: uppercase;
+  }
 
   .subtitle {
     font-size: 14px;
