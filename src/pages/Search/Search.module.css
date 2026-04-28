@@ -2,7 +2,9 @@
 .page{ padding:24px; background:var(--bg) }
 .wrapper{ max-width:1100px; margin:0 auto }
 
-.title{ font-size:32px; margin:8px 0 6px; color:var(--text) }
+.title{ font-size:32px; margin:8px 0 6px; color:var(--text) 
+	text-transform: uppercase;
+}
 .subtitle{ margin:0 0 18px; color:var(--muted) }
 .error{ color:#b00020; background:#fff1f2; border:1px solid #fecdd3; padding:10px 12px; border-radius:10px; display:inline-block }
 .badge{ display:inline-block; margin-left:10px; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:12px; vertical-align:middle }

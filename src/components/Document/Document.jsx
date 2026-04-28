@@ -6,7 +6,7 @@ import api from "../../api/axios";
 export default function Document() {
   const [items, setItems] = useState([]); 
   const [title, setTitle] = useState("");
-  const [document, setDocument] = useState(null);
+  const [docFile, setDocFile] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false); 
@@ -51,7 +51,7 @@ export default function Document() {
 
   function resetForm() {
     setTitle('');
-    setDocument(null);
+    setDocFile(null);
     setEditingId(null);
     setMessage(null);
     setError(null);
@@ -62,9 +62,10 @@ export default function Document() {
   e.preventDefault();
   setError(null); setMessage(null);
 
-  if (document) {
-    const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    if (!allowed.includes(document.type)) {
+  if (docFile) {
+    const allowedExt = ['.pdf', '.doc', '.docx'];
+    const isAllowed = allowedExt.some(ext => docFile.name.toLowerCase().endsWith(ext));
+    if (!isAllowed) {
       setError('Можно загрузить только PDF или Word');
       return;
     }
@@ -72,17 +73,18 @@ export default function Document() {
 
   const formData = new FormData();
   formData.append('title', title);
-  if (document) formData.append('document', document);
+  if (docFile) formData.append('document', docFile);
 
   setSaving(true);
   try {
     let url = '/documents';
     if (editingId) {
-      url = `/documents/${editingId}?_method=PUT`; 
+      url = `/documents/${editingId}?_method=PUT`;
     }
 
     await api.post(url, formData, {
-      headers: authHeaders() 
+      headers: { ...authHeaders(), 'Content-Type': 'multipart/form-data' },
+      transformRequest: [(data) => data],
     });
 
     setMessage(editingId ? 'Документ обновлён' : 'Документ добавлен');
@@ -97,7 +99,7 @@ export default function Document() {
   const handleEdit = (doc) => {
     setEditingId(doc.id);
     setTitle(doc.title || '');
-    setDocument(null);
+    setDocFile(null);
     if (inputRef.current) inputRef.current.value = null;
     setMessage(null); setError(null);
   };
@@ -138,7 +140,7 @@ export default function Document() {
 
             <label>
               Файл документа (PDF / Word)
-              <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" onChange={e => setDocument(e.target.files[0])} />
+              <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" onChange={e => setDocFile(e.target.files[0])} />
             </label>
 
             <div className={styles.actions}>

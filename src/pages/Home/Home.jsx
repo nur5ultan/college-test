@@ -43,7 +43,7 @@ export default function Home(){
             <h2 className={styles.h2}>{t('home.name','Мангистауский колледж туризма')}</h2>
             <a
               className={styles.videoButton}
-              href="https://youtu.be/AnGRgWeVNJY?si=bx9p6gKstULYRNKi"
+              href="https://youtu.be/zQnmIrsCThQ?si=UWwynduLb0AP7g6E"
               target="_blank"
               rel="noopener noreferrer"
             >

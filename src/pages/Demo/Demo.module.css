@@ -21,6 +21,8 @@
 	margin: 0 0 8px;
 	font-size: 36px;
 	letter-spacing: 0.2px;
+
+	text-transform: uppercase;
 }
 
 .subtitle{
@@ -63,6 +65,8 @@
 /* .title {
     font-size: 2.2rem;
     font-weight: 700;
+
+	text-transform: uppercase;
 } */
 
 .langSection {
@@ -141,5 +145,7 @@
     
     .title {
         font-size: 1.5rem;
-    }
+    
+	text-transform: uppercase;
+}
 }

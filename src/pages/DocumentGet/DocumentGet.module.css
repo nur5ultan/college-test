@@ -179,6 +179,8 @@
     color: #1e293b;
     margin: 0 0 4px;
     line-height: 1.4;
+
+	text-transform: uppercase;
 }
 
 .fileType {
@@ -294,7 +296,9 @@
     
     .title {
         font-size: 16px;
-    }
+    
+	text-transform: uppercase;
+}
     
     .actions {
         justify-content: stretch;

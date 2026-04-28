@@ -74,6 +74,8 @@
 	margin: 0 0 8px;
 	font-size: 36px;
 	letter-spacing: 0.2px;
+
+	text-transform: uppercase;
 }
 
 .subtitle{
@@ -119,7 +121,9 @@
 
   .title {
     font-size: 28px;
-  }
+  
+	text-transform: uppercase;
+}
 
   .subtitle {
     font-size: 14px;

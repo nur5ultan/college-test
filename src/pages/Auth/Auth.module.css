@@ -17,6 +17,8 @@
 .title{
   margin: 0 0 14px;
   color: #003363;
+
+	text-transform: uppercase;
 }
 
 .form{
