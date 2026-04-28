@@ -147,7 +147,8 @@ header {
     opacity: 0;
     transform: translateX(10px);
     animation: linkFade 360ms cubic-bezier(.2, .9, .2, 1) forwards;
-    animation-delay: calc(var(--i) * 0.06s); /* Немного ускорим анимацию */
+    animation-delay: calc(var(--i) * 0.06s);
+    text-transform: uppercase;
 }
 
 .sidebarLink:hover {
@@ -212,6 +213,7 @@ header {
         transition: 0.2s;
         background-color: transparent;
         border: none;
+        text-transform: uppercase;
     }
 
     .language:hover {
