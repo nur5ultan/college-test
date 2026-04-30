@@ -46,7 +46,7 @@ export default function Header() {
                             <ScreenReader />
                         </div>
                         <a href="https://www.facebook.com/mkt.aktau/" target="_blank" rel="noopener noreferrer"><img src="/images/facebook.png" className={styles.socialImg} alt="facebook"/></a>
-                        <a href="https://www.youtube.com/@MangistauCollegeTourism" target="_blank" rel="noopener noreferrer"><img src="/images/youtube.png" className={styles.socialImg} alt="youtube"/></a>
+                        <a href="https://www.youtube.com/@mangystautourismcollege" target="_blank" rel="noopener noreferrer"><img src="/images/youtube.png" className={styles.socialImg} alt="youtube"/></a>
                         <a href="https://www.instagram.com/mangistau_college_tourism/" target="_blank" rel="noopener noreferrer"><img src="/images/insta.png" className={styles.socialImg} alt="instagram"/></a>
                     </div>
                 </div>
